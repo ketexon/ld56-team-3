@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
 [ext_resource type="PackedScene" uid="uid://blqoqhbium4lv" path="res://Colony/Colony.tscn" id="2_mulan"]
 [ext_resource type="PackedScene" uid="uid://bhw1scxos7xws" path="res://Selection/TinyCreatureSelector.tscn" id="3_nht5s"]
-[ext_resource type="PackedScene" path="res://UI.tscn" id="4_b05wy"]
+[ext_resource type="PackedScene" uid="uid://cqifqaefnu4ty" path="res://UI.tscn" id="4_b05wy"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,7 +12,6 @@ script = ExtResource("1_6r02h")
 
 [node name="Colony" parent="." instance=ExtResource("2_mulan")]
 
-[node name="TinyCreatureSelector" parent="." instance=ExtResource("3_nht5s")]
-metadata/_edit_use_anchors_ = true
-
 [node name="CanvasLayer" parent="." instance=ExtResource("4_b05wy")]
+
+[node name="TinyCreatureSelector" parent="." instance=ExtResource("3_nht5s")]

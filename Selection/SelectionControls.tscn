@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://3bnwa1355cj1"]
+
+[ext_resource type="PackedScene" uid="uid://5wxmlm42aoyl" path="res://Selection/AssignRoleButton.tscn" id="1_asey6"]
+[ext_resource type="Script" path="res://Selection/SelectionControls.gd" id="1_g31qi"]
+
+[node name="SelectionControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g31qi")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Warrior" parent="HBox" instance=ExtResource("1_asey6")]
+layout_mode = 2
+
+[node name="Lumberjack" parent="HBox" instance=ExtResource("1_asey6")]
+layout_mode = 2
+role = 3
+
+[node name="Forager" parent="HBox" instance=ExtResource("1_asey6")]
+layout_mode = 2
+role = 4
+
+[node name="Miner" parent="HBox" instance=ExtResource("1_asey6")]
+layout_mode = 2
+role = 5
+
+[node name="Ambassador" parent="HBox" instance=ExtResource("1_asey6")]
+layout_mode = 2
+role = 6
+
+[node name="Royal" parent="HBox" instance=ExtResource("1_asey6")]
+layout_mode = 2
+role = 7

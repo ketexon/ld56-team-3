@@ -6,14 +6,15 @@ var selecting := false
 
 @onready var rect: NinePatchRect = %Rect
 
-var selected_tiny_creatures: Array[TinyCreature] = []
+static var selected_tiny_creatures: Array[TinyCreature] = []
 
 func _ready():
 	rect.visible = false
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			selected_tiny_creatures.clear()
 			if event.is_pressed() and event.shift_pressed:
 				mouse_pos_start = get_global_mouse_position()
 				position = mouse_pos_start
