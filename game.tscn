@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b33kuaqm0s1q"]
+[gd_scene load_steps=6 format=3 uid="uid://b33kuaqm0s1q"]
 
 [ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
 [ext_resource type="Script" path="res://Colony.gd" id="2_mgtgc"]
+[ext_resource type="PackedScene" uid="uid://dv6rcqp7r8e6l" path="res://shop/shop.tscn" id="3_kjo0m"]
+[ext_resource type="Script" path="res://shop/shop.gd" id="4_5qynk"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pm4x3"]
 
@@ -10,8 +12,7 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_6r02h")
 zoom_duration = 0.2
-pan_speed = 30.0
-scroll_speed = 30.0
+zoom_curve = null
 
 [node name="Colony" type="Node2D" parent="."]
 script = ExtResource("2_mgtgc")
@@ -20,3 +21,21 @@ player = true
 [node name="Sprite2D" type="Sprite2D" parent="Colony"]
 scale = Vector2(10, 10)
 texture = SubResource("PlaceholderTexture2D_pm4x3")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_kjo0m")]
+script = ExtResource("4_5qynk")
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
