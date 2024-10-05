@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b33kuaqm0s1q"]
+[gd_scene load_steps=4 format=3 uid="uid://b33kuaqm0s1q"]
 
 [ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
 [ext_resource type="Script" path="res://Colony.gd" id="2_mgtgc"]
-
-[sub_resource type="Curve" id="Curve_ih8dt"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pm4x3"]
 
@@ -14,7 +10,8 @@ point_count = 2
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_6r02h")
 zoom_duration = 0.2
-zoom_curve = SubResource("Curve_ih8dt")
+pan_speed = 30.0
+scroll_speed = 30.0
 
 [node name="Colony" type="Node2D" parent="."]
 script = ExtResource("2_mgtgc")
