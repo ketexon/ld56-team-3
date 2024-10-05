@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b33kuaqm0s1q"]
+[gd_scene load_steps=5 format=3 uid="uid://b33kuaqm0s1q"]
 
 [ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
 [ext_resource type="Script" path="res://Colony.gd" id="2_mgtgc"]
+[ext_resource type="PackedScene" uid="uid://bhw1scxos7xws" path="res://Selection/TinyCreatureSelector.tscn" id="3_nht5s"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pm4x3"]
 
@@ -20,3 +21,6 @@ player = true
 [node name="Sprite2D" type="Sprite2D" parent="Colony"]
 scale = Vector2(10, 10)
 texture = SubResource("PlaceholderTexture2D_pm4x3")
+
+[node name="TinyCreatureSelector" parent="." instance=ExtResource("3_nht5s")]
+metadata/_edit_use_anchors_ = true
