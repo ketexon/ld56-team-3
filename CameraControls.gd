@@ -1,17 +1,20 @@
 class_name CameraControls
 extends Camera2D
 
-@export var colony_view_zoom = 20.0
-@export var map_view_zoom = 1.0
+@export var colony_view_zoom_threshold = 10.0
+@export var max_zoom = 20.0
+@export var min_zoom = 1.0
 @export var zoom_duration = 1.0
 @export var pan_speed: float = 10.0
 @export var scroll_speed: float = 10.0
 @export var scroll_sensitivity: float = 0.01
 
+static var viewing_colony: bool = false
+
 var start_cursor_pos: Vector2
 var start_pos: Vector2
 
-var zoom_goal: float = colony_view_zoom
+var zoom_goal: float = max_zoom
 
 var last_zoom_level: int = -1
 
@@ -30,9 +33,9 @@ func _input(event: InputEvent) -> void:
 			elif not event.pressed:
 				panning = false
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			set_zoom_percent(zoom_percent + scroll_sensitivity)
-		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			set_zoom_percent(zoom_percent - scroll_sensitivity)
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			set_zoom_percent(zoom_percent + scroll_sensitivity)
 
 	if event.is_action_pressed("center_on_colony"):
 		center_on_player()
@@ -70,12 +73,14 @@ func _process(delta: float) -> void:
 	);
 	zoom.y = zoom.x
 
+	viewing_colony = zoom.x < colony_view_zoom_threshold
+
 	position = lerp(position, pan_goal, delta * pan_speed)
 
 
 func set_zoom_percent(percent: float):
 	zoom_percent = clampf(percent, 0, 1)
-	zoom_goal = lerp(colony_view_zoom, map_view_zoom, sqrt(zoom_percent))
+	zoom_goal = lerp(max_zoom, min_zoom, sqrt(zoom_percent))
 
 func center_on_player():
 	pan_goal = Colony.player_colony.position

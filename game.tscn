@@ -11,9 +11,6 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_6r02h")
-zoom_duration = 0.2
-pan_speed = 30.0
-scroll_speed = 30.0
 
 [node name="Colony" type="Node2D" parent="."]
 script = ExtResource("2_mgtgc")

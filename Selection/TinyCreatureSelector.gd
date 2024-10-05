@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 				selecting = false
 
 func _process(_delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and selecting:
 		var cur_mouse_pos := get_global_mouse_position()
 		var delta_mouse_pos := cur_mouse_pos - mouse_pos_start
 
