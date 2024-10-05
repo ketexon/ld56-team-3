@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv6rcqp7r8e6l"]
+[gd_scene load_steps=3 format=3 uid="uid://dv6rcqp7r8e6l"]
+
+[ext_resource type="PackedScene" uid="uid://b3prsx1kgmqlb" path="res://Shop/ShopButton.tscn" id="1_whls7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2qk5c"]
 font_size = 64
@@ -11,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -19,8 +21,45 @@ anchor_top = 0.1
 anchor_right = 0.8
 anchor_bottom = 0.9
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "SHOP"
 label_settings = SubResource("LabelSettings_2qk5c")
 horizontal_alignment = 1
+
+[node name="ShopButtonContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ShopButtonContainer" instance=ExtResource("1_whls7")]
+layout_mode = 2
+
+[node name="MarginContainer2" parent="Panel/MarginContainer/VBoxContainer/ShopButtonContainer" instance=ExtResource("1_whls7")]
+layout_mode = 2
+
+[node name="MarginContainer3" parent="Panel/MarginContainer/VBoxContainer/ShopButtonContainer" instance=ExtResource("1_whls7")]
+layout_mode = 2
+
+[node name="MarginContainer4" parent="Panel/MarginContainer/VBoxContainer/ShopButtonContainer" instance=ExtResource("1_whls7")]
+layout_mode = 2
+
+[node name="MarginContainer5" parent="Panel/MarginContainer/VBoxContainer/ShopButtonContainer" instance=ExtResource("1_whls7")]
+layout_mode = 2
+
+[node name="MarginContainer6" parent="Panel/MarginContainer/VBoxContainer/ShopButtonContainer" instance=ExtResource("1_whls7")]
+layout_mode = 2
