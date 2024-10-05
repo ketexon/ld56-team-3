@@ -1,4 +1,4 @@
-class_name Shop 
+class_name Shop
 extends CanvasLayer
 
 
