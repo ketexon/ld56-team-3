@@ -13,18 +13,24 @@ func _ready():
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.shift_pressed:
-			if event.is_pressed():
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed() and event.shift_pressed:
 				mouse_pos_start = get_global_mouse_position()
 				position = mouse_pos_start
 				rect.size = Vector2.ZERO
 				selecting = true
 				rect.visible = true
-			else:
+			elif not event.is_pressed() and selecting:
 				selecting = false
 				rect.visible = false
 
+				selected_tiny_creatures_set_selected(false)
 				selected_tiny_creatures = get_selected_tiny_creatures()
+				selected_tiny_creatures_set_selected(true)
+
+func selected_tiny_creatures_set_selected(v: bool):
+	for tiny_creature in selected_tiny_creatures:
+		tiny_creature.set_selected(v)
 
 
 func get_selected_tiny_creatures() -> Array[TinyCreature]:
