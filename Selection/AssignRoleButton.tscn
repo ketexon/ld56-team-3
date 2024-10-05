@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://5wxmlm42aoyl"]
+
+[ext_resource type="Theme" uid="uid://beibv71ia17pd" path="res://Theme.tres" id="1_uhrtt"]
+[ext_resource type="Script" path="res://Selection/AssignRoleButton.gd" id="2_vrr1m"]
+
+[node name="Warrior" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+tooltip_text = "Assign selected Tiny Creatures the Warrior Role"
+theme = ExtResource("1_uhrtt")
+theme_type_variation = &"IconButton"
+script = ExtResource("2_vrr1m")
+role = 2

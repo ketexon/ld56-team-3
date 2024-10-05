@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://btegv4utd825m"]
+[gd_scene load_steps=7 format=3 uid="uid://btegv4utd825m"]
 
 [ext_resource type="Script" path="res://TinyCreature/TinyCreature.gd" id="1_rww3b"]
 [ext_resource type="Shader" uid="uid://0x7ndyk20oxm" path="res://TinyCreature/TinyCreatureSelectedShader.tres" id="2_ckjit"]
@@ -12,6 +12,10 @@ shader = ExtResource("2_ckjit")
 shader_parameter/OutlineEnabled = false
 shader_parameter/ColorParameterColorParameter = Color(1, 1, 1, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sv07"]
+atlas = ExtResource("3_d58gx")
+region = Rect2(0, 0, 16, 16)
+
 [node name="TinyCreature" type="CharacterBody2D" groups=["player_tiny_creatures"]]
 script = ExtResource("1_rww3b")
 
@@ -22,4 +26,4 @@ shape = SubResource("RectangleShape2D_xfuov")
 texture_filter = 1
 texture_repeat = 1
 material = SubResource("ShaderMaterial_4vllp")
-texture = ExtResource("3_d58gx")
+texture = SubResource("AtlasTexture_8sv07")
