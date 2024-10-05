@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3prsx1kgmqlb"]
+
+[ext_resource type="Script" path="res://Shop/ShopButton.gd" id="1_damly"]
+
+[node name="MarginContainer" type="MarginContainer"]
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_damly")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 2
+size_flags_horizontal = 0
