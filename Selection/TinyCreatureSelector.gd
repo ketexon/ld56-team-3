@@ -14,8 +14,8 @@ func _ready():
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			selected_tiny_creatures.clear()
 			if event.is_pressed() and event.shift_pressed:
+				selected_tiny_creatures.clear()
 				mouse_pos_start = get_global_mouse_position()
 				position = mouse_pos_start
 				rect.size = Vector2.ZERO
@@ -29,9 +29,15 @@ func _unhandled_input(event: InputEvent) -> void:
 				selected_tiny_creatures = get_selected_tiny_creatures()
 				selected_tiny_creatures_set_selected(true)
 
-func selected_tiny_creatures_set_selected(v: bool):
+static func selected_tiny_creatures_set_selected(v: bool):
 	for tiny_creature in selected_tiny_creatures:
 		tiny_creature.set_selected(v)
+
+static func selected_tiny_creatures_set_role(role: TinyCreature.Role, keep_selected: bool = false):
+	for tiny_creature in selected_tiny_creatures:
+		tiny_creature.role = role
+	if not keep_selected:
+		selected_tiny_creatures.clear()
 
 
 func get_selected_tiny_creatures() -> Array[TinyCreature]:

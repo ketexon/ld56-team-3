@@ -9,4 +9,4 @@ func _ready() -> void:
 	tooltip_text = ROLE_STRING % TinyCreature.role_name_dict[role]
 
 func _pressed() -> void:
-	print("PRESSED")
+	TinyCreatureSelector.selected_tiny_creatures_set_role(role)
