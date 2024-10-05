@@ -16,16 +16,19 @@ var zoom_goal: float = colony_view_zoom
 var last_zoom_level: int = -1
 
 var zoom_percent: float = 0
+var panning := false
 
 @onready var pan_goal: Vector2 = position
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		var mods = event.get_modifiers_mask().shift_pressed
-		if event.button_index == MOUSE_BUTTON_LEFT and not mods.shift_pressed:
-			if event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed and not event.shift_pressed:
 				start_cursor_pos = get_viewport().get_mouse_position()
 				start_pos = position
+				panning = true
+			elif not event.pressed:
+				panning = false
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			set_zoom_percent(zoom_percent + scroll_sensitivity)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
@@ -55,7 +58,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if panning:
 		var cur_pos := get_viewport().get_mouse_position()
 		var delta_pos := cur_pos - start_cursor_pos
 		pan_goal = start_pos - delta_pos/zoom.x

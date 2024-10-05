@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhw1scxos7xws"]
+
+[ext_resource type="Script" path="res://Selection/TinyCreatureSelector.gd" id="1_0lnoo"]
+[ext_resource type="Texture2D" uid="uid://dmke3je7pst1a" path="res://Selection/Selection.png" id="2_8naul"]
+
+[node name="TinyCreatureSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0lnoo")
+
+[node name="Rect" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_8naul")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+metadata/_edit_use_anchors_ = true
