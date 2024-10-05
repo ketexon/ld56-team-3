@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b33kuaqm0s1q"]
+[gd_scene load_steps=6 format=3 uid="uid://b33kuaqm0s1q"]
 
 [ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
 [ext_resource type="Script" path="res://Colony.gd" id="2_mgtgc"]
 [ext_resource type="PackedScene" uid="uid://bhw1scxos7xws" path="res://Selection/TinyCreatureSelector.tscn" id="3_nht5s"]
+[ext_resource type="PackedScene" uid="uid://dv6rcqp7r8e6l" path="res://shop/shop.tscn" id="4_24usg"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pm4x3"]
 
@@ -24,3 +25,5 @@ texture = SubResource("PlaceholderTexture2D_pm4x3")
 
 [node name="TinyCreatureSelector" parent="." instance=ExtResource("3_nht5s")]
 metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_24usg")]
