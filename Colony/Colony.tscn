@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://blqoqhbium4lv"]
+
+[ext_resource type="Script" path="res://Colony/Colony.gd" id="1_e44d0"]
+[ext_resource type="PackedScene" uid="uid://btegv4utd825m" path="res://TinyCreature/TinyCreature.tscn" id="2_4tsrc"]
+
+[node name="Colony" type="Node2D"]
+script = ExtResource("1_e44d0")
+player = true
+
+[node name="TinyCreature" parent="." instance=ExtResource("2_4tsrc")]

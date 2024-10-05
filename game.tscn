@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b33kuaqm0s1q"]
+[gd_scene load_steps=5 format=3 uid="uid://b33kuaqm0s1q"]
 
 [ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
-[ext_resource type="Script" path="res://Colony.gd" id="2_mgtgc"]
-[ext_resource type="PackedScene" uid="uid://btegv4utd825m" path="res://TinyCreature/TinyCreature.tscn" id="3_j837d"]
+[ext_resource type="PackedScene" uid="uid://blqoqhbium4lv" path="res://Colony/Colony.tscn" id="2_mulan"]
 [ext_resource type="PackedScene" uid="uid://bhw1scxos7xws" path="res://Selection/TinyCreatureSelector.tscn" id="3_nht5s"]
 [ext_resource type="PackedScene" uid="uid://dv6rcqp7r8e6l" path="res://Shop/shop.tscn" id="4_24usg"]
 
@@ -11,11 +10,7 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_6r02h")
 
-[node name="Colony" type="Node2D" parent="."]
-script = ExtResource("2_mgtgc")
-player = true
-
-[node name="TinyCreature" parent="Colony" instance=ExtResource("3_j837d")]
+[node name="Colony" parent="." instance=ExtResource("2_mulan")]
 
 [node name="TinyCreatureSelector" parent="." instance=ExtResource("3_nht5s")]
 metadata/_edit_use_anchors_ = true

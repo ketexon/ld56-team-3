@@ -32,6 +32,9 @@ func _input(event: InputEvent) -> void:
 				panning = true
 			elif not event.pressed:
 				panning = false
+		if event.button_index == MOUSE_BUTTON_MIDDLE:
+			center_on_player()
+
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			set_zoom_percent(zoom_percent - scroll_sensitivity)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
