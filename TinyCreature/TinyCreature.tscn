@@ -9,6 +9,7 @@ size = Vector2(16, 16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4vllp"]
 shader = ExtResource("2_ckjit")
+shader_parameter/OutlineEnabled = false
 shader_parameter/ColorParameterColorParameter = Color(1, 1, 1, 1)
 
 [node name="TinyCreature" type="CharacterBody2D" groups=["player_tiny_creatures"]]
