@@ -14,5 +14,15 @@ var enabled:
 
 @onready var base_movement_ai: TinyCreatureBaseMovementAI = %BaseMovementAI
 
+var colony: Colony:
+	get: return tiny_creature.colony
+
+var in_range: bool:
+	get:
+		return (
+			(global_position - colony.monarch.global_position).length_squared()
+			< colony.radius * colony.radius
+		)
+
 func on_enabled_changed() -> void:
 	pass

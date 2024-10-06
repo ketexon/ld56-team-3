@@ -1,10 +1,10 @@
 class_name GResource
-extends Node
+extends Node2D
 
 enum Type {
-	Wood,
-	Mushroom,
-	Jewels,
+	WOOD,
+	MUSHROOMS,
+	JEWELS,
 }
 
 @export var type: Type
