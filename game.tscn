@@ -10,29 +10,9 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_6r02h")
 
-[node name="Colony" parent="." instance=ExtResource("2_mulan")]
-position = Vector2(374, 179)
-
-[node name="ColonyUI" type="Control" parent="Colony"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="debugLabel" type="Label" parent="Colony/ColonyUI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "label"
-
-[node name="debugButton" type="Button" parent="Colony/ColonyUI"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = -115.0
-offset_top = 7.0
-offset_right = -20.0
-offset_bottom = 38.0
-text = "debug"
+[node name="Colony" parent="." node_paths=PackedStringArray("tiny_creatures") instance=ExtResource("2_mulan")]
+position = Vector2(426, 243)
+tiny_creatures = []
 
 [node name="CanvasLayer" parent="." instance=ExtResource("4_b05wy")]
 
