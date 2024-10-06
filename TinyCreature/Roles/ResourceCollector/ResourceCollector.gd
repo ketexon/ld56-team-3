@@ -16,7 +16,9 @@ var visible_resources:
 var touching_resource: bool = false
 
 func _process(delta: float) -> void:
+	super._process(delta)
 	if not enabled: return
+	print("HI")
 	if target_resource:
 		if target_resource in visible_resources:
 			_collect_resource()
@@ -40,7 +42,7 @@ func _process(delta: float) -> void:
 
 
 func _start_collecting_resource():
-	phase = CollectResourcePhase.MOVING
+	print("HI")
 	base_movement_ai.enabled = false
 	tiny_creature.movement_dir = target_resource.global_position - global_position
 

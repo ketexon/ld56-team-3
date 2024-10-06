@@ -1,109 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://blqoqhbium4lv"]
+[gd_scene load_steps=5 format=3 uid="uid://blqoqhbium4lv"]
 
 [ext_resource type="Script" path="res://Colony/Colony.gd" id="1_e44d0"]
 [ext_resource type="PackedScene" uid="uid://btegv4utd825m" path="res://TinyCreature/TinyCreature.tscn" id="2_4tsrc"]
-[ext_resource type="Script" path="res://Shop/ShopItem.gd" id="2_on6si"]
 [ext_resource type="Texture2D" uid="uid://blgfp3r8p8851" path="res://UI/assets/placeholders/Athletics_Icon.png" id="3_1t7yx"]
-[ext_resource type="Resource" uid="uid://cwg4tqykhosel" path="res://Shop/ShopItem/corruption.tres" id="3_fj40x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vp6pt"]
 radius = 256.0
 
-[node name="Colony" type="Node2D" node_paths=PackedStringArray("monarch", "tiny_creatures")]
+[node name="Colony" type="Node2D"]
 script = ExtResource("1_e44d0")
 player = true
-monarch = NodePath("TinyCreature")
-tiny_creatures = [NodePath("TinyCreature")]
-available_shop_items = Array[ExtResource("2_on6si")]([ExtResource("3_fj40x")])
-
-[node name="TinyCreature" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-role = 1
-
-[node name="TinyCreature2" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature3" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature4" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature5" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature6" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature7" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature8" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature9" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature10" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature11" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature12" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature13" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature14" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature15" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature16" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature17" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature18" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature19" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature20" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature21" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
-
-[node name="TinyCreature22" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
-colony = NodePath("..")
-speed = 32
+tiny_creature_prefab = ExtResource("2_4tsrc")
 
 [node name="VisibilityArea" type="Area2D" parent="."]
 unique_name_in_owner = true

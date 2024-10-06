@@ -2,39 +2,72 @@ class_name Colony
 extends Node2D
 
 @export var player: bool = false
-@export var power: int = 0
-@export var persuasion: int = 0
-@export var reputation: int = 0
 
-@export var monarch: TinyCreature
-@export var tiny_creatures: Array[TinyCreature]
+@export var start_tiny_creatures: int = 32
+@export var tiny_creature_prefab: PackedScene
 
 @onready var visibility_area: Area2D = %VisibilityArea
 @onready var colony_ui : Control = %ColonyUI
 
-@export var  available_shop_items: Array[ShopItem]
+@export var available_shop_items: Array[ShopItem]
+
+@export var power: int = 0
+@export var persuasion: int = 0
+@export var reputation: int = 0
 
 @export var wood: int
 @export var mushrooms: int
 @export var jewels: int
 
+var tiny_creatures: Array[TinyCreature] = []
+var monarch: TinyCreature = null
 var visible_resources: Array[GResource] = []
 
 var radius: float:
 	get:
 		var n = len(tiny_creatures)
 		# return 32 * pow(1.5, n)
-		return 64 * sqrt(n)
+		return calc_radius(n)
+
+func calc_radius(n: int) -> float:
+	return 32 * sqrt(n)
 
 static var player_colony: Colony
+
+static var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
 	if player:
 		player_colony = self
 		colony_ui.visible = false
 
+	var start_radius := calc_radius(start_tiny_creatures)
+
+	monarch = add_tiny_creature(Vector2.ZERO, TinyCreature.Role.MONARCH)
+
+	for i in range(start_tiny_creatures - 1):
+		var angle := rng.randf_range(0, 360)
+		# NOTE: this isn't uniform sampling, but is more denser to the middle
+		# (which is what we want)
+		var r := start_radius * rng.randf()
+		var vec := Vector2.from_angle(angle) * r
+
+		add_tiny_creature(vec)
+
 	visibility_area.body_entered.connect(_body_entered_visibility)
 	visibility_area.body_exited.connect(_body_exited_visibility)
+
+func add_tiny_creature(pos: Vector2, role: TinyCreature.Role = TinyCreature.Role.UNASSIGNED) -> TinyCreature:
+	var tiny_creature := tiny_creature_prefab.instantiate() as TinyCreature
+
+	tiny_creature.role = role
+	tiny_creature.colony = self
+	tiny_creature.position = pos
+
+	add_child(tiny_creature)
+	tiny_creatures.push_back(tiny_creature)
+
+	return tiny_creature
 
 
 func _physics_process(delta: float) -> void:

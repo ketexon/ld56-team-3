@@ -1,9 +1,7 @@
 class_name TinyCreatureRole
 extends Node2D
 
-var enabled:
-	get:
-		return tiny_creature.role == role
+var enabled: bool:
 	set(v):
 		if enabled != v:
 			enabled = v
@@ -23,6 +21,15 @@ var in_range: bool:
 			(global_position - colony.monarch.global_position).length_squared()
 			< colony.radius * colony.radius
 		)
+
+func _ready():
+	enabled = false
+
+func _process(_delta):
+	if enabled and role != tiny_creature.role:
+		enabled = false
+	if not enabled and role == tiny_creature.role:
+		enabled = true
 
 func on_enabled_changed() -> void:
 	pass

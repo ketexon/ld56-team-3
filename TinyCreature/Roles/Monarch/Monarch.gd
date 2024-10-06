@@ -23,6 +23,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			destination = get_global_mouse_position()
 
 func _process(delta: float) -> void:
+	super._process(delta)
 	if not enabled: return
 	if moving:
 		var disp = destination - tiny_creature.global_position
