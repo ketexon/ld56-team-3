@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b33kuaqm0s1q"]
+[gd_scene load_steps=8 format=3 uid="uid://b33kuaqm0s1q"]
 
 [ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
 [ext_resource type="PackedScene" uid="uid://blqoqhbium4lv" path="res://Colony/Colony.tscn" id="2_mulan"]
 [ext_resource type="PackedScene" uid="uid://bhw1scxos7xws" path="res://Selection/TinyCreatureSelector.tscn" id="3_nht5s"]
 [ext_resource type="PackedScene" uid="uid://cqifqaefnu4ty" path="res://UI.tscn" id="4_b05wy"]
+[ext_resource type="Script" path="res://GResource/GResource.gd" id="5_63egg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qwmq"]
+size = Vector2(256, 256)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ivxcw"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,3 +23,14 @@ tiny_creatures = []
 [node name="CanvasLayer" parent="." instance=ExtResource("4_b05wy")]
 
 [node name="TinyCreatureSelector" parent="." instance=ExtResource("3_nht5s")]
+
+[node name="WoodResource" type="StaticBody2D" parent="." groups=["resources"]]
+position = Vector2(-500, 0)
+script = ExtResource("5_63egg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodResource"]
+shape = SubResource("RectangleShape2D_6qwmq")
+
+[node name="Sprite2D" type="Sprite2D" parent="WoodResource"]
+scale = Vector2(256, 256)
+texture = SubResource("PlaceholderTexture2D_ivxcw")
