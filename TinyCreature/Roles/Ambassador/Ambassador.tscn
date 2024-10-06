@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvfy6sgqdsati"]
+
+[ext_resource type="Script" path="res://TinyCreature/Roles/Ambassador/ambassador.gd" id="1_3kwy1"]
+
+[node name="Ambassador" type="Node2D"]
+script = ExtResource("1_3kwy1")
