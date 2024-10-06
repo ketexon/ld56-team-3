@@ -13,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_4cnid")
 
 [node name="stats" type="Control" parent="."]
@@ -21,6 +22,7 @@ anchors_preset = 0
 anchor_right = 0.166667
 anchor_bottom = 0.296296
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="PersuasionIcon" type="Sprite2D" parent="stats"]
 position = Vector2(32, 96)
