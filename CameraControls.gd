@@ -84,6 +84,11 @@ func _process(delta: float) -> void:
 	viewing_colony = zoom.x < colony_view_zoom_threshold
 
 	position = lerp(position, pan_goal, delta * pan_speed)
+	
+	if viewing_colony:
+		%debugButton.disabled = false
+	if !viewing_colony:
+		%debugButton.disabled = true
 
 
 func set_zoom_percent(percent: float):
