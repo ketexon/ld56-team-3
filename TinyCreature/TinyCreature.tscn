@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://btegv4utd825m"]
+[gd_scene load_steps=9 format=3 uid="uid://btegv4utd825m"]
 
 [ext_resource type="Script" path="res://TinyCreature/TinyCreature.gd" id="1_rww3b"]
 [ext_resource type="Shader" uid="uid://0x7ndyk20oxm" path="res://TinyCreature/TinyCreatureSelectedShader.tres" id="2_ckjit"]
+[ext_resource type="Script" path="res://TinyCreature/TinyCreatureBaseMovementAI.gd" id="2_cnp7e"]
 [ext_resource type="Texture2D" uid="uid://54jnednsgmfq" path="res://LittleGuy.png" id="3_d58gx"]
 [ext_resource type="PackedScene" uid="uid://deakocdom8ine" path="res://TinyCreature/Roles/Monarch/Monarch.tscn" id="4_k7cv5"]
 
@@ -18,10 +19,13 @@ atlas = ExtResource("3_d58gx")
 region = Rect2(0, 0, 16, 16)
 
 [node name="TinyCreature" type="CharacterBody2D" groups=["player_tiny_creatures"]]
+collision_mask = 0
 script = ExtResource("1_rww3b")
 
-[node name="BaseMovementAI" type="Node2D" parent="."]
+[node name="BaseMovementAI" type="Node2D" parent="." node_paths=PackedStringArray("tiny_creature")]
 unique_name_in_owner = true
+script = ExtResource("2_cnp7e")
+tiny_creature = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xfuov")

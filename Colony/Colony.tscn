@@ -18,6 +18,90 @@ colony = NodePath("..")
 speed = 32
 role = 1
 
+[node name="TinyCreature2" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature3" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature4" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature5" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature6" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature7" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature8" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature9" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature10" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature11" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature12" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature13" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature14" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature15" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature16" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature17" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature18" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature19" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature20" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature21" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
+[node name="TinyCreature22" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+
 [node name="VisibilityArea" type="Area2D" parent="."]
 unique_name_in_owner = true
 
@@ -30,6 +114,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Action1" type="Button" parent="ColonyUI"]
 unique_name_in_owner = true
@@ -39,6 +124,7 @@ offset_top = -14.0
 offset_right = 69.0
 offset_bottom = 17.0
 text = "Action"
+metadata/_edit_use_anchors_ = true
 
 [node name="testImage" type="TextureRect" parent="ColonyUI"]
 layout_mode = 0
@@ -46,5 +132,6 @@ offset_left = -60.0
 offset_top = -36.0
 offset_bottom = 24.0
 texture = ExtResource("3_1t7yx")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ColonyUI/Action1" to="." method="_on_action_1_pressed"]

@@ -23,7 +23,8 @@ var visible_resources: Array[GResource] = []
 var radius: float:
 	get:
 		var n = len(tiny_creatures)
-		return 256 * pow(1.5, n/32.0)
+		# return 32 * pow(1.5, n)
+		return 64 * sqrt(n)
 
 static var player_colony: Colony
 
@@ -40,13 +41,11 @@ func _physics_process(delta: float) -> void:
 
 
 func _body_entered_visibility(body: Node2D):
-	print(body)
 	if body.is_in_group(&"resources"):
 		visible_resources.push_back(body)
 
 
 func _body_exited_visibility(body: Node2D):
-	print(body)
 	if body.is_in_group(&"resources"):
 		visible_resources.erase(body)
 

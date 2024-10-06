@@ -14,16 +14,19 @@ static var viewing_colony: bool = false
 var start_cursor_pos: Vector2
 var start_pos: Vector2
 
-var zoom_goal: float = max_zoom
+var zoom_goal: float = min_zoom
 
 var last_zoom_level: int = -1
 
-var zoom_percent: float = 0
+var zoom_percent: float = 1
 var panning := false
 
-var following_player := false
+var following_player := true
 
 @onready var pan_goal: Vector2 = position
+
+func _ready() -> void:
+	set_zoom_percent(1)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

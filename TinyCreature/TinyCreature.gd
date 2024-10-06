@@ -12,9 +12,13 @@ extends CharacterBody2D
 
 @onready var health := max_health
 
+const WALKING_SPEED_MULT := 0.5
+
 var movement_dir: Vector2:
 	set(value):
 		movement_dir = value.normalized() if not value.is_zero_approx() else Vector2.ZERO
+
+var running: bool = false
 
 enum Role {
 	UNASSIGNED,
@@ -47,5 +51,5 @@ func set_selected(_value: bool):
 	pass # TODO: UI for if selected
 
 func _physics_process(delta: float) -> void:
-	velocity = movement_dir * speed
+	velocity = movement_dir * speed * (WALKING_SPEED_MULT if not running else 1)
 	move_and_slide()
