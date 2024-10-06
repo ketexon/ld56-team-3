@@ -4,5 +4,3 @@
 
 [node name="ResourceCollector" type="Node2D"]
 script = ExtResource("1_22wr7")
-resource_type = null
-role = null

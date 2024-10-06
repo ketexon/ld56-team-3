@@ -6,6 +6,7 @@ static var instance: Shop
 @export var button_prefab: PackedScene
 @onready var button_container: Control = %ShopButtonContainer
 
+
 func _ready():
 	instance = self
 	visible = false
@@ -13,3 +14,9 @@ func _ready():
 		var button := button_prefab.instantiate() as Button
 		button_container.add_child(button)
 		button.initialize(shop_item)
+
+
+
+
+func _on_button_pressed() -> void:
+	self.hide()
