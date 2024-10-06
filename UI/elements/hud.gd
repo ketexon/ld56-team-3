@@ -1,9 +1,12 @@
 extends Control
 
 # Stats to be displayed
-@export var Power : Label
-@export var Persuasion : Label
-@export var Reputation : Label
+@export var Power : int
+@export var Persuasion : int
+@export var Reputation : int
+
+# Colony Monarch Icon?
+@export var ColonyIcon : Texture2D
 
 # updating labels
 func update_power(number : int):
