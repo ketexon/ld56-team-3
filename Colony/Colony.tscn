@@ -3,8 +3,13 @@
 [ext_resource type="Script" path="res://Colony/Colony.gd" id="1_e44d0"]
 [ext_resource type="PackedScene" uid="uid://btegv4utd825m" path="res://TinyCreature/TinyCreature.tscn" id="2_4tsrc"]
 
-[node name="Colony" type="Node2D"]
+[node name="Colony" type="Node2D" node_paths=PackedStringArray("monarch", "tiny_creatures")]
 script = ExtResource("1_e44d0")
 player = true
+monarch = NodePath("TinyCreature")
+tiny_creatures = [NodePath("TinyCreature")]
 
-[node name="TinyCreature" parent="." instance=ExtResource("2_4tsrc")]
+[node name="TinyCreature" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
+colony = NodePath("..")
+speed = 32
+role = 1

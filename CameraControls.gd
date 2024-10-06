@@ -21,6 +21,8 @@ var last_zoom_level: int = -1
 var zoom_percent: float = 0
 var panning := false
 
+var following_player := false
+
 @onready var pan_goal: Vector2 = position
 
 func _input(event: InputEvent) -> void:
@@ -30,11 +32,11 @@ func _input(event: InputEvent) -> void:
 				start_cursor_pos = get_viewport().get_mouse_position()
 				start_pos = position
 				panning = true
+				following_player = false
 			elif not event.pressed:
 				panning = false
 		if event.button_index == MOUSE_BUTTON_MIDDLE:
 			center_on_player()
-
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			set_zoom_percent(zoom_percent - scroll_sensitivity)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
@@ -69,6 +71,9 @@ func _process(delta: float) -> void:
 		var delta_pos := cur_pos - start_cursor_pos
 		pan_goal = start_pos - delta_pos/zoom.x
 
+	if following_player:
+		pan_goal = Colony.player_colony.monarch.position
+
 	zoom.x = lerpf(
 		zoom.x,
 		zoom_goal,
@@ -86,4 +91,4 @@ func set_zoom_percent(percent: float):
 	zoom_goal = lerp(max_zoom, min_zoom, sqrt(zoom_percent))
 
 func center_on_player():
-	pan_goal = Colony.player_colony.position
+	following_player = true

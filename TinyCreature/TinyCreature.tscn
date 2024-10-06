@@ -34,4 +34,6 @@ texture = SubResource("AtlasTexture_8sv07")
 
 [node name="Roles" type="Node2D" parent="."]
 
-[node name="Monarch" parent="Roles" instance=ExtResource("4_k7cv5")]
+[node name="Monarch" parent="Roles" node_paths=PackedStringArray("tiny_creature") instance=ExtResource("4_k7cv5")]
+tiny_creature = NodePath("../..")
+role = 1
