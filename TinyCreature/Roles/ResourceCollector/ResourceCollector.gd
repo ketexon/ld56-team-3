@@ -11,7 +11,7 @@ var target_resource: GResource = null
 
 var visible_resources:
 	get:
-		return colony.visible_resource[resource_type]
+		return colony.visible_resources[resource_type]
 
 var touching_resource: bool = false
 

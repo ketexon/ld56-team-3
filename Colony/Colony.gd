@@ -21,7 +21,11 @@ extends Node2D
 
 var tiny_creatures: Array[TinyCreature] = []
 var monarch: TinyCreature = null
-var visible_resources: Array[GResource] = []
+var visible_resources: Dictionary = {
+	GResource.Type.WOOD: [],
+	GResource.Type.MUSHROOMS: [],
+	GResource.Type.JEWELS: [],
+}
 
 var radius: float:
 	get:
@@ -75,13 +79,13 @@ func _physics_process(delta: float) -> void:
 
 
 func _body_entered_visibility(body: Node2D):
-	if body.is_in_group(&"resources"):
-		visible_resources.push_back(body)
+	if body.is_in_group(&"resources") and body is GResource:
+		visible_resources[body.type].push_back(body)
 
 
 func _body_exited_visibility(body: Node2D):
 	if body.is_in_group(&"resources"):
-		visible_resources.erase(body)
+		visible_resources[body.type].erase(body)
 
 
 func buy_shop_item(shop_item:ShopItem) -> bool:

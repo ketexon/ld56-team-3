@@ -44,4 +44,17 @@ texture = SubResource("AtlasTexture_8sv07")
 tiny_creature = NodePath("../..")
 role = 1
 
-[node name="ResourceCollector" parent="Roles" instance=ExtResource("6_hf8v5")]
+[node name="Lumberjack" parent="Roles" node_paths=PackedStringArray("tiny_creature") instance=ExtResource("6_hf8v5")]
+resource_type = 0
+tiny_creature = NodePath("../..")
+role = 3
+
+[node name="Forager" parent="Roles" node_paths=PackedStringArray("tiny_creature") instance=ExtResource("6_hf8v5")]
+resource_type = 1
+tiny_creature = NodePath("../..")
+role = 4
+
+[node name="Miner" parent="Roles" node_paths=PackedStringArray("tiny_creature") instance=ExtResource("6_hf8v5")]
+resource_type = 2
+tiny_creature = NodePath("../..")
+role = 5
