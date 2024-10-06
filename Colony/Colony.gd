@@ -66,7 +66,7 @@ func buy_shop_item(shop_item:ShopItem) -> bool:
 		return false
 	return true
 
-# Button Presses 
+# Button Presses
 func _on_action_1_pressed() -> void:
 	print("Action 1")
 func _on_action_2_pressed() -> void:
@@ -79,7 +79,7 @@ func _on_action_5_pressed() -> void:
 	print("Action 5")
 
 func _process(delta: float) -> void:
-	
+
 	# Enemy Colony's UI follows its monarch
 	if !player:
 		colony_ui.global_position = monarch.global_position
