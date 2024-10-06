@@ -10,6 +10,7 @@ extends Node2D
 @export var tiny_creatures: Array[TinyCreature]
 
 @onready var visibility_area: Area2D = %VisibilityArea
+@onready var colony_ui : Control = %ColonyUI
 
 @export var  available_shop_items: Array[ShopItem]
 
@@ -66,3 +67,14 @@ func buy_shop_item(shop_item:ShopItem) -> bool:
 	if reputation < shop_item.min_reputation:
 		return false
 	return true
+
+
+func _on_action_1_pressed() -> void:
+	print("Action 1")
+	
+func _process(delta: float) -> void:
+	# 
+	if CameraControls.viewing_colony:
+		colony_ui.visible = true
+	elif !CameraControls.viewing_colony:
+		colony_ui.visible = false

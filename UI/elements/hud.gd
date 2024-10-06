@@ -14,7 +14,3 @@ func update_rep(number : int):
 	%reputationLab.text = "Power: " + str(number)
 
 var powerDebug = 0
-
-func _on_add_power_pressed() -> void:
-	powerDebug += 1
-	update_power(powerDebug)
