@@ -85,11 +85,6 @@ func _process(delta: float) -> void:
 
 	position = lerp(position, pan_goal, delta * pan_speed)
 
-	if viewing_colony:
-		%debugButton.disabled = false
-	if !viewing_colony:
-		%debugButton.disabled = true
-
 
 func set_zoom_percent(percent: float):
 	zoom_percent = clampf(percent, 0, 1)
