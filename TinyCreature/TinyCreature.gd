@@ -1,8 +1,10 @@
 class_name TinyCreature
 extends CharacterBody2D
 
+@export var colony: Colony
+
 @export var lumberjack_skill: int = 2
-@export var foliage_skill: int = 2
+@export var foraging_skill: int = 2
 @export var mining_skill: int = 2
 @export var max_health: int = 100
 @export var damage: int = 5

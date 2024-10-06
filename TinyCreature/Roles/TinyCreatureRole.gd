@@ -1,3 +1,4 @@
+class_name TinyCreatureRole
 extends Node2D
 
 var enabled := false
