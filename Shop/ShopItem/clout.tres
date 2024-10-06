@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ShopItem" load_steps=2 format=3 uid="uid://1nnbchgsiedh"]
+
+[ext_resource type="Script" path="res://Shop/ShopItem.gd" id="1_7ptu5"]
+
+[resource]
+script = ExtResource("1_7ptu5")
+name = ""
+cost_wood = 0
+cost_mushroom = 0
+cost_jewel = 0
+min_power = 0
+delta_power = 0
+mult_power = 1
+min_persuasion = 0
+delta_persuasion = 0
+mult_persuasion = 1
+min_reputation = 0
+delta_reputation = 0
+mult_reputation = 1
