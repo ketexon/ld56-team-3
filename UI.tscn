@@ -13,5 +13,4 @@ mouse_filter = 2
 mouse_filter = 2
 
 [node name="HUD" parent="." instance=ExtResource("1_k7kj1")]
-visible = false
 mouse_filter = 2
