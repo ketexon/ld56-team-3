@@ -31,6 +31,7 @@ static var player_colony: Colony
 func _ready() -> void:
 	if player:
 		player_colony = self
+		colony_ui.visible = false
 
 	visibility_area.body_entered.connect(_body_entered_visibility)
 	visibility_area.body_exited.connect(_body_exited_visibility)
@@ -78,6 +79,12 @@ func _on_action_5_pressed() -> void:
 	print("Action 5")
 
 func _process(delta: float) -> void:
+	
+	# Enemy Colony's UI follows its monarch
+	if !player:
+		colony_ui.global_position = monarch.global_position
+		
+	# Zooming in too far hides colony UI
 	if CameraControls.viewing_colony:
 		colony_ui.visible = true
 	elif !CameraControls.viewing_colony:
