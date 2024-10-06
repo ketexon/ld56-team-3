@@ -1,20 +1,22 @@
 class_name CameraControls
 extends Camera2D
 
-@export var colony_view_zoom_threshold = 10.0
-@export var max_zoom = 20.0
-@export var min_zoom = 1.0
+@export var colony_view_half_height_threshold = 16.0 * 50.0
+@export var max_half_height = 16 * 100.0
+@export var min_half_height = 64.0
 @export var zoom_duration = 1.0
 @export var pan_speed: float = 10.0
 @export var scroll_speed: float = 10.0
 @export var scroll_sensitivity: float = 0.01
+
+const REFERENCE_HALF_HEIGHT = 1920.0 / 2
 
 static var viewing_colony: bool = false
 
 var start_cursor_pos: Vector2
 var start_pos: Vector2
 
-var zoom_goal: float = min_zoom
+var zoom_goal: float
 
 var last_zoom_level: int = -1
 
@@ -28,7 +30,7 @@ var following_player := true
 func _ready() -> void:
 	set_zoom_percent(1)
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed and not event.shift_pressed:
@@ -84,14 +86,25 @@ func _process(delta: float) -> void:
 	);
 	zoom.y = zoom.x
 
-	viewing_colony = zoom.x < colony_view_zoom_threshold
+	viewing_colony = cur_half_height() > colony_view_half_height_threshold
 
 	position = lerp(position, pan_goal, delta * pan_speed)
 
+func cur_half_height() -> float:
+	return REFERENCE_HALF_HEIGHT / zoom.x
+
+func get_zoom_from_half_height(half_height: float) -> float:
+	return REFERENCE_HALF_HEIGHT / half_height
 
 func set_zoom_percent(percent: float):
 	zoom_percent = clampf(percent, 0, 1)
-	zoom_goal = lerp(max_zoom, min_zoom, sqrt(zoom_percent))
+	var half_height_goal = lerp(
+		min_half_height,
+		max_half_height,
+		percent
+	)
+
+	zoom_goal = get_zoom_from_half_height(half_height_goal)
 
 func center_on_player():
 	following_player = true
