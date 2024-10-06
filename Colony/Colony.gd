@@ -19,6 +19,8 @@ extends Node2D
 @export var mushrooms: int
 @export var jewels: int
 
+signal resource_visibility_changed(resource: GResource, visible: bool)
+
 var tiny_creatures: Array[TinyCreature] = []
 var monarch: TinyCreature = null
 var visible_resources: Dictionary = {
@@ -81,11 +83,13 @@ func _physics_process(delta: float) -> void:
 func _body_entered_visibility(body: Node2D):
 	if body.is_in_group(&"resources") and body is GResource:
 		visible_resources[body.type].push_back(body)
+		resource_visibility_changed.emit(body, true)
 
 
 func _body_exited_visibility(body: Node2D):
 	if body.is_in_group(&"resources"):
 		visible_resources[body.type].erase(body)
+		resource_visibility_changed.emit(body, false)
 
 
 func buy_shop_item(shop_item:ShopItem) -> bool:
