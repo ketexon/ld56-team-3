@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqifqaefnu4ty"]
+[gd_scene load_steps=4 format=3 uid="uid://cqifqaefnu4ty"]
 
-[ext_resource type="PackedScene" uid="uid://dcfs1rukvq4xb" path="res://Shop/Shop.tscn" id="1_unh4r"]
+[ext_resource type="PackedScene" uid="uid://dahwiigjcdwd2" path="res://UI/elements/hud.tscn" id="1_k7kj1"]
+[ext_resource type="PackedScene" uid="uid://dv6rcqp7r8e6l" path="res://Shop/Shop.tscn" id="1_unh4r"]
 [ext_resource type="PackedScene" uid="uid://3bnwa1355cj1" path="res://Selection/SelectionControls.tscn" id="2_75c5h"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -8,3 +9,5 @@
 [node name="Shop" parent="." instance=ExtResource("1_unh4r")]
 
 [node name="SelectionControls" parent="." instance=ExtResource("2_75c5h")]
+
+[node name="HUD" parent="." instance=ExtResource("1_k7kj1")]
