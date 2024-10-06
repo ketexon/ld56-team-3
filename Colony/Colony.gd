@@ -65,9 +65,17 @@ func buy_shop_item(shop_item:ShopItem) -> bool:
 		return false
 	return true
 
-
+# Button Presses 
 func _on_action_1_pressed() -> void:
 	print("Action 1")
+func _on_action_2_pressed() -> void:
+	print("Action 2")
+func _on_action_3_pressed() -> void:
+	print("Action 3")
+func _on_action_4_pressed() -> void:
+	print("Action 4")
+func _on_action_5_pressed() -> void:
+	print("Action 5")
 
 func _process(delta: float) -> void:
 	if CameraControls.viewing_colony:
