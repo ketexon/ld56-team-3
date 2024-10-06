@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://blqoqhbium4lv"]
+[gd_scene load_steps=7 format=3 uid="uid://blqoqhbium4lv"]
 
 [ext_resource type="Script" path="res://Colony/Colony.gd" id="1_e44d0"]
 [ext_resource type="PackedScene" uid="uid://btegv4utd825m" path="res://TinyCreature/TinyCreature.tscn" id="2_4tsrc"]
+[ext_resource type="Script" path="res://Shop/ShopItem.gd" id="2_on6si"]
 [ext_resource type="Texture2D" uid="uid://blgfp3r8p8851" path="res://UI/assets/placeholders/Athletics_Icon.png" id="3_1t7yx"]
+[ext_resource type="Resource" uid="uid://cwg4tqykhosel" path="res://Shop/ShopItem/corruption.tres" id="3_fj40x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vp6pt"]
 radius = 256.0
@@ -12,6 +14,7 @@ script = ExtResource("1_e44d0")
 player = true
 monarch = NodePath("TinyCreature")
 tiny_creatures = [NodePath("TinyCreature")]
+available_shop_items = Array[ExtResource("2_on6si")]([ExtResource("3_fj40x")])
 
 [node name="TinyCreature" parent="." node_paths=PackedStringArray("colony") instance=ExtResource("2_4tsrc")]
 colony = NodePath("..")
