@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcfs1rukvq4xb"]
+[gd_scene load_steps=4 format=3 uid="uid://betxjo4hybhi8"]
 
-[ext_resource type="PackedScene" uid="uid://b3prsx1kgmqlb" path="res://Shop/ShopButton.tscn" id="1_whls7"]
+[ext_resource type="PackedScene" path="res://Shop/ShopButton.tscn" id="1_whls7"]
 [ext_resource type="Script" path="res://Shop/Shop.gd" id="1_y6n2r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2qk5c"]

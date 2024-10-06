@@ -1,36 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://b33kuaqm0s1q"]
+[gd_scene load_steps=8 format=3 uid="uid://b33kuaqm0s1q"]
 
 [ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
 [ext_resource type="PackedScene" uid="uid://blqoqhbium4lv" path="res://Colony/Colony.tscn" id="2_mulan"]
 [ext_resource type="PackedScene" uid="uid://bhw1scxos7xws" path="res://Selection/TinyCreatureSelector.tscn" id="3_nht5s"]
-[ext_resource type="PackedScene" path="res://Shop/Shop.tscn" id="4_24usg"]
+[ext_resource type="PackedScene" uid="uid://bbqbwkcy3s6en" path="res://UI.tscn" id="4_b05wy"]
+[ext_resource type="Script" path="res://GResource/GResource.gd" id="5_63egg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qwmq"]
+size = Vector2(256, 256)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ivxcw"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_6r02h")
 
+[node name="Colony2" parent="." instance=ExtResource("2_mulan")]
+position = Vector2(852, -199)
+player = false
+
 [node name="Colony" parent="." instance=ExtResource("2_mulan")]
-tiny_creature_prefab = null
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_b05wy")]
 
 [node name="TinyCreatureSelector" parent="." instance=ExtResource("3_nht5s")]
-metadata/_edit_use_anchors_ = true
 
-[node name="CanvasLayer" parent="." instance=ExtResource("4_24usg")]
-button_prefab = null
+[node name="WoodResource" type="StaticBody2D" parent="." groups=["resources"]]
+position = Vector2(-398, 0)
+collision_layer = 3
+script = ExtResource("5_63egg")
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodResource"]
+shape = SubResource("RectangleShape2D_6qwmq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.1
-anchor_right = 0.8
-anchor_bottom = 0.9
+[node name="Sprite2D" type="Sprite2D" parent="WoodResource"]
+scale = Vector2(256, 256)
+texture = SubResource("PlaceholderTexture2D_ivxcw")
