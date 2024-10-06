@@ -16,9 +16,7 @@ size = Vector2(256, 256)
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_6r02h")
 
-[node name="Colony" parent="." node_paths=PackedStringArray("tiny_creatures") instance=ExtResource("2_mulan")]
-position = Vector2(426, 243)
-tiny_creatures = []
+[node name="Colony" parent="." instance=ExtResource("2_mulan")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("4_b05wy")]
 
