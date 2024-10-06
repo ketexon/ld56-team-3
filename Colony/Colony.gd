@@ -42,14 +42,12 @@ func _physics_process(delta: float) -> void:
 func _body_entered_visibility(body: Node2D):
 	print(body)
 	if body.is_in_group(&"resources"):
-		print("ADDED")
 		visible_resources.push_back(body)
 
 
 func _body_exited_visibility(body: Node2D):
 	print(body)
 	if body.is_in_group(&"resources"):
-		print("REMOVED")
 		visible_resources.erase(body)
 
 
@@ -71,9 +69,8 @@ func buy_shop_item(shop_item:ShopItem) -> bool:
 
 func _on_action_1_pressed() -> void:
 	print("Action 1")
-	
+
 func _process(delta: float) -> void:
-	# 
 	if CameraControls.viewing_colony:
 		colony_ui.visible = true
 	elif !CameraControls.viewing_colony:
