@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://blqoqhbium4lv"]
+[gd_scene load_steps=4 format=3 uid="uid://blqoqhbium4lv"]
 
 [ext_resource type="Script" path="res://Colony/Colony.gd" id="1_e44d0"]
 [ext_resource type="PackedScene" uid="uid://btegv4utd825m" path="res://TinyCreature/TinyCreature.tscn" id="2_4tsrc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vp6pt"]
+radius = 256.0
 
 [node name="Colony" type="Node2D" node_paths=PackedStringArray("monarch", "tiny_creatures")]
 script = ExtResource("1_e44d0")
@@ -13,3 +16,9 @@ tiny_creatures = [NodePath("TinyCreature")]
 colony = NodePath("..")
 speed = 32
 role = 1
+
+[node name="VisibilityArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibilityArea"]
+shape = SubResource("CircleShape2D_vp6pt")
