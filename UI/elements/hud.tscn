@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dahwiigjcdwd2"]
+[gd_scene load_steps=6 format=3 uid="uid://dahwiigjcdwd2"]
 
 [ext_resource type="Script" path="res://UI/elements/hud.gd" id="1_4cnid"]
 [ext_resource type="Texture2D" uid="uid://sc3hj2xd7a2y" path="res://UI/assets/placeholders/Persuasion_Icon.png" id="2_njaq8"]
 [ext_resource type="Texture2D" uid="uid://cikguryis8yqd" path="res://UI/assets/placeholders/Perception_Icon.png" id="3_71ma2"]
 [ext_resource type="Texture2D" uid="uid://blgfp3r8p8851" path="res://UI/assets/placeholders/Athletics_Icon.png" id="4_3xv8s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6ag2"]
+font_size = 10
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -15,66 +18,159 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_4cnid")
 
-[node name="stats" type="Control" parent="."]
+[node name="Stats" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Power" type="VBoxContainer" parent="Stats"]
 layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.166667
-anchor_bottom = 0.296296
-grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 
-[node name="PersuasionIcon" type="Sprite2D" parent="stats"]
-position = Vector2(32, 96)
-texture = ExtResource("2_njaq8")
-
-[node name="PerceptionIcon" type="Sprite2D" parent="stats"]
-position = Vector2(32, 160)
-texture = ExtResource("3_71ma2")
-
-[node name="AthleticsIcon" type="Sprite2D" parent="stats"]
-position = Vector2(32, 32)
+[node name="TextureRect" type="TextureRect" parent="Stats/Power"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Power"
 texture = ExtResource("4_3xv8s")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="powerLab" type="Label" parent="stats"]
+[node name="PowerLabel" type="Label" parent="Stats/Power"]
 unique_name_in_owner = true
 layout_mode = 2
-anchor_top = 0.083
-anchor_right = 1.0
-anchor_bottom = 0.208
-offset_left = 64.0
-offset_top = 0.0639992
-offset_right = 64.0
-offset_bottom = 1.064
 mouse_filter = 1
-text = "Power: "
+text = "100"
+label_settings = SubResource("LabelSettings_w6ag2")
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="persuasionLab" type="Label" parent="stats"]
+[node name="Persuasion" type="VBoxContainer" parent="Stats"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Stats/Persuasion"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Persuasion"
+texture = ExtResource("3_71ma2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PersuasionLabel" type="Label" parent="Stats/Persuasion"]
 unique_name_in_owner = true
 layout_mode = 2
-anchor_left = 0.015
-anchor_top = 0.417
-anchor_right = 1.0
-anchor_bottom = 0.542
-offset_left = 62.08
-offset_top = -0.064003
-offset_right = 64.0
-offset_bottom = 0.935989
 mouse_filter = 1
-text = "Persuasion: 
-"
+text = "100"
+label_settings = SubResource("LabelSettings_w6ag2")
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="reputationLab" type="Label" parent="stats"]
+[node name="Reputation" type="VBoxContainer" parent="Stats"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Stats/Reputation"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Reputation"
+texture = ExtResource("2_njaq8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ReputationLabel" type="Label" parent="Stats/Reputation"]
 unique_name_in_owner = true
 layout_mode = 2
-anchor_top = 0.75
-anchor_right = 1.0
-anchor_bottom = 0.875
-offset_left = 64.0
-offset_top = -1.52588e-05
-offset_right = 64.0
-offset_bottom = 0.999985
 mouse_filter = 1
-text = "Reputation: "
+text = "100"
+label_settings = SubResource("LabelSettings_w6ag2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resources" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ShopButton" type="Button" parent="Resources"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Shop"
+
+[node name="Wood" type="HBoxContainer" parent="Resources"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Resources/Wood"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Wood"
+texture = ExtResource("4_3xv8s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WoodLabel" type="Label" parent="Resources/Wood"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+text = "100"
+label_settings = SubResource("LabelSettings_w6ag2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mushrooms" type="HBoxContainer" parent="Resources"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Resources/Mushrooms"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Mushrooms"
+texture = ExtResource("3_71ma2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MushroomsLabel" type="Label" parent="Resources/Mushrooms"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+text = "100"
+label_settings = SubResource("LabelSettings_w6ag2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Jewels" type="HBoxContainer" parent="Resources"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Resources/Jewels"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Jewels"
+texture = ExtResource("2_njaq8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="JewelsLabel" type="Label" parent="Resources/Jewels"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+text = "100"
+label_settings = SubResource("LabelSettings_w6ag2")
+horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,19 +1,26 @@
 extends Control
 
-# Stats to be displayed
-@export var Power : int
-@export var Persuasion : int
-@export var Reputation : int
+@onready var power_label: Label = %PowerLabel
+@onready var persuasion_label: Label = %PersuasionLabel
+@onready var reputation_label: Label = %ReputationLabel
 
-# Colony Monarch Icon?
-@export var ColonyIcon : Texture2D
+@onready var wood_label: Label = %WoodLabel
+@onready var mushrooms_label: Label = %MushroomsLabel
+@onready var jewels_label: Label = %JewelsLabel
 
-# updating labels
-func update_power(number : int):
-	%powerLab.text = "Power: " + str(number)
-func update_pers(number : int):
-	%persuasionLab.text = "Power: " + str(number)
-func update_rep(number : int):
-	%reputationLab.text = "Power: " + str(number)
+@onready var shop_button: Button = %ShopButton
 
-var powerDebug = 0
+func _ready():
+	shop_button.button_down.connect(_open_shop)
+
+func _open_shop():
+	Shop.instance.visible = not Shop.instance.visible
+
+func _process(_delta):
+	power_label.text = "%d" % Colony.player_colony.power
+	persuasion_label.text = "%d" % Colony.player_colony.persuasion
+	reputation_label.text = "%d" % Colony.player_colony.reputation
+
+	wood_label.text = "%d" % Colony.player_colony.wood
+	mushrooms_label.text = "%d" % Colony.player_colony.mushrooms
+	jewels_label.text = "%d" % Colony.player_colony.jewels
