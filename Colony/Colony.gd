@@ -76,6 +76,14 @@ func add_tiny_creature(pos: Vector2, role: TinyCreature.Role = TinyCreature.Role
 	return tiny_creature
 
 
+func add_resource(type: GResource.Type):
+	match type:
+		GResource.Type.WOOD: wood += 1
+		GResource.Type.MUSHROOMS: mushrooms += 1
+		GResource.Type.JEWELS: jewels += 1
+		_: assert(false)
+
+
 func _physics_process(delta: float) -> void:
 	visibility_area.global_position = monarch.global_position
 

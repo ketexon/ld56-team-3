@@ -58,7 +58,3 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
 		collided.emit(collision)
-
-# func add_resource(type: GResource.Type):
-# 	match type:
-# 		GResource.Type.WOOD:

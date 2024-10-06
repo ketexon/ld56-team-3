@@ -25,6 +25,8 @@ var hit_delay: float:
 var target_resource: GResource = null
 var target_resource_closest_point: Vector2
 
+var collecting_resource := false
+
 var hit_t := 0.0
 
 var visible_resources: Array[GResource]:
@@ -82,35 +84,41 @@ func _choose_closest_resource() -> GResource:
 	return closest
 
 func _start_collecting_resource():
+	collecting_resource = true
 	touching_resource = false
 	base_movement_ai.enabled = false
 	hit_t = 0
 	var closest_point = get_resource_closest_point(target_resource)
 	tiny_creature.movement_dir = closest_point - global_position
+	tiny_creature.running = true
 	tiny_creature.collided.connect(_on_collided)
 
 func _on_collided(collision: KinematicCollision2D):
 	var collider := collision.get_collider() as Node2D
-	print("COLLIDING")
 	if collider == target_resource:
+		tiny_creature.movement_dir = Vector2.ZERO
+		tiny_creature.running = false
 		touching_resource = true
 		tiny_creature.collided.disconnect(_on_collided)
 
 func _collect_resource(delta):
-	if not target_resource or not touching_resource:
+	if not collecting_resource:
 		return
 
-	hit_t += delta
-	if hit_t >= hit_delay:
-		hit_t -= hit_delay
-		if target_resource.hit():
-			tiny_creature.colony.add_resource(target_resource.type)
-
-
+	if touching_resource:
+		hit_t += delta
+		if hit_t >= hit_delay:
+			hit_t -= hit_delay
+			if target_resource.hit():
+				tiny_creature.colony.add_resource(target_resource.type)
+				print("COLECTED")
 
 func _stop_collecting_resource():
+	if !collecting_resource: return
 	base_movement_ai.enabled = true
-	tiny_creature.collided.disconnect(_on_collided)
+	if not touching_resource:
+		tiny_creature.collided.disconnect(_on_collided)
+	collecting_resource = false
 
 func _try_collect_new_resource():
 	# see if there are any other visible resources
