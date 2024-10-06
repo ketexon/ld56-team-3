@@ -11,6 +11,12 @@ extends Node2D
 
 @onready var visibility_area: Area2D = %VisibilityArea
 
+@export var  available_shop_items: Array[ShopItem]
+
+@export var wood: int
+@export var mushrooms: int
+@export var jewels: int
+
 var visible_resources: Array[GResource] = []
 
 var radius: float:
@@ -38,8 +44,25 @@ func _body_entered_visibility(body: Node2D):
 		print("ADDED")
 		visible_resources.push_back(body)
 
+
 func _body_exited_visibility(body: Node2D):
 	print(body)
 	if body.is_in_group(&"resources"):
 		print("REMOVED")
 		visible_resources.erase(body)
+
+
+func buy_shop_item(shop_item:ShopItem) -> bool:
+	if wood < shop_item.cost_wood:
+		return false
+	if mushrooms < shop_item.cost_mushroom:
+		return false
+	if jewels < shop_item.cost_jewel:
+		return false
+	if power < shop_item.min_power:
+		return false
+	if persuasion < shop_item.min_persuasion:
+		return false
+	if reputation < shop_item.min_reputation:
+		return false
+	return true
