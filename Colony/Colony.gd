@@ -83,13 +83,19 @@ func _physics_process(delta: float) -> void:
 func _body_entered_visibility(body: Node2D):
 	if body.is_in_group(&"resources") and body is GResource:
 		visible_resources[body.type].push_back(body)
+		body.tree_exiting.connect(_on_resource_exiting_tree, CONNECT_ONE_SHOT)
 		resource_visibility_changed.emit(body, true)
 
 
 func _body_exited_visibility(body: Node2D):
 	if body.is_in_group(&"resources"):
 		visible_resources[body.type].erase(body)
+		body.tree_exiting.disconnect(_on_resource_exiting_tree)
 		resource_visibility_changed.emit(body, false)
+
+func _on_resource_exiting_tree(res: GResource):
+	visible_resources[res.type].erase(res)
+	resource_visibility_changed.emit(res, false)
 
 
 func buy_shop_item(shop_item:ShopItem) -> bool:

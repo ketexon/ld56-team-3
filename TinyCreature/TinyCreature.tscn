@@ -45,7 +45,7 @@ tiny_creature = NodePath("../..")
 role = 1
 
 [node name="Lumberjack" parent="Roles" node_paths=PackedStringArray("tiny_creature") instance=ExtResource("6_hf8v5")]
-resource_type = 0
+resource_type = null
 tiny_creature = NodePath("../..")
 role = 3
 

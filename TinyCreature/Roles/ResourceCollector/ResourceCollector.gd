@@ -8,43 +8,70 @@ const HIT_DELAY: float = 1.0
 @onready var destination: Vector2 = global_position
 
 var target_resource: GResource = null
+var target_resource_closest_point: Vector2
 
-var visible_resources:
+var visible_resources: Array[GResource]:
 	get:
-		return colony.visible_resources[resource_type]
+		var a: Array[GResource] = []
+		a.assign(colony.visible_resources[resource_type])
+		return a
 
 var touching_resource: bool = false
+
+func _ready():
+	super._ready()
+
+	tiny_creature.colony.resource_visibility_changed.connect(_resource_visibility_changed)
 
 func _process(delta: float) -> void:
 	super._process(delta)
 	if not enabled: return
 
 	if target_resource:
-		if target_resource in visible_resources:
-			_collect_resource()
-		else:
-			_stop_collecting_resource()
-	else:
-		if not visible_resources.is_empty():
-			for res in visible_resources:
-				if not target_resource:
-					target_resource = res
-				else:
-					var target_dist = target_resource.global_position.distance_squared_to(
-						tiny_creature.global_position
-					)
-					var cur_dist = target_resource.global_position.distance_squared_to(
-						tiny_creature.global_position
-					)
-					if cur_dist < target_dist:
-						target_resource = res
-			_start_collecting_resource()
+		_collect_resource()
 
+func _on_collided(collision: KinematicCollision2D):
+	print("COLLIDED")
+
+func _resource_visibility_changed(res: GResource, visible: bool):
+	if not enabled: return
+	# resource became invisible
+	if res == target_resource and not visible:
+		_stop_collecting_resource()
+		_try_collect_new_resource()
+	# new resource
+	elif target_resource == null and res.type == resource_type and visible:
+		target_resource = res
+		target_resource_closest_point = get_resource_closest_point(target_resource)
+		_start_collecting_resource()
+
+func get_resource_closest_point(res: GResource) -> Vector2:
+	return Util.closest_point_rect(res.shape, tiny_creature.global_position)
+
+func _choose_closest_resource() -> GResource:
+	var closest: GResource = null
+	var closest_dist: float = INF
+	for res in visible_resources:
+		if not closest:
+			closest = res
+			closest_dist = (
+				get_resource_closest_point(res)
+					.distance_squared_to(tiny_creature.global_position)
+			)
+		else:
+			var cur_dist := closest.global_position.distance_squared_to(
+				tiny_creature.global_position
+			)
+			if closest_dist > cur_dist:
+				closest = res
+
+	return closest
 
 func _start_collecting_resource():
-	print("HI")
 	base_movement_ai.enabled = false
-	tiny_creature.movement_dir = target_resource.global_position - global_position
+	var closest_point = get_resource_closest_point(target_resource)
+	tiny_creature.movement_dir = closest_point - global_position
+	tiny_creature.collided.connect(_on_collided)
 
 func _collect_resource():
 	pass
@@ -52,6 +79,16 @@ func _collect_resource():
 
 func _stop_collecting_resource():
 	base_movement_ai.enabled = true
+	tiny_creature.collided.disconnect(_on_collided)
+
+func _try_collect_new_resource():
+	# see if there are any other visible resources
+	target_resource = _choose_closest_resource()
+	if target_resource:
+		_start_collecting_resource()
 
 func on_enabled_changed() -> void:
-	base_movement_ai.enabled = true
+	if enabled:
+		_try_collect_new_resource()
+	else:
+		_stop_collecting_resource()

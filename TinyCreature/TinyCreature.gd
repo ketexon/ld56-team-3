@@ -12,6 +12,8 @@ extends CharacterBody2D
 
 @onready var health := max_health
 
+signal collided(collision: KinematicCollision2D)
+
 const WALKING_SPEED_MULT := 0.5
 
 var movement_dir: Vector2:
@@ -53,3 +55,6 @@ func set_selected(_value: bool):
 func _physics_process(delta: float) -> void:
 	velocity = movement_dir * speed * (WALKING_SPEED_MULT if not running else 1)
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		collided.emit(collision)

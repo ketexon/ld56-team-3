@@ -1,5 +1,5 @@
 class_name GResource
-extends Node2D
+extends StaticBody2D
 
 enum Type {
 	WOOD,
@@ -13,6 +13,8 @@ enum Type {
 
 @onready var resource_remaining := total_resource
 @onready var hits_remaining := hits_per_resource
+
+@onready var shape: CollisionShape2D = $CollisionShape2D
 
 func hit() -> bool:
 	if resource_remaining == 0:
