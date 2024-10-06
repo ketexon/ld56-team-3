@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b33kuaqm0s1q"]
+[gd_scene load_steps=10 format=3 uid="uid://b33kuaqm0s1q"]
 
 [ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
 [ext_resource type="PackedScene" uid="uid://blqoqhbium4lv" path="res://Colony/Colony.tscn" id="2_mulan"]
+[ext_resource type="Script" path="res://Shop/ShopItem.gd" id="3_kwj6s"]
 [ext_resource type="PackedScene" uid="uid://bhw1scxos7xws" path="res://Selection/TinyCreatureSelector.tscn" id="3_nht5s"]
 [ext_resource type="PackedScene" uid="uid://bbqbwkcy3s6en" path="res://UI.tscn" id="4_b05wy"]
+[ext_resource type="Resource" uid="uid://1nnbchgsiedh" path="res://Shop/ShopItem/clout.tres" id="4_hj2xi"]
 [ext_resource type="Script" path="res://GResource/GResource.gd" id="5_63egg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qwmq"]
@@ -21,6 +23,7 @@ position = Vector2(852, -199)
 player = false
 
 [node name="Colony" parent="." instance=ExtResource("2_mulan")]
+available_shop_items = Array[ExtResource("3_kwj6s")]([ExtResource("4_hj2xi")])
 
 [node name="CanvasLayer" parent="." instance=ExtResource("4_b05wy")]
 
