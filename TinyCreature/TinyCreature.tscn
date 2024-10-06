@@ -19,7 +19,7 @@ atlas = ExtResource("3_d58gx")
 region = Rect2(0, 0, 16, 16)
 
 [node name="TinyCreature" type="CharacterBody2D" groups=["player_tiny_creatures"]]
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_rww3b")
 
 [node name="BaseMovementAI" type="Node2D" parent="." node_paths=PackedStringArray("tiny_creature")]

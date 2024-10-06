@@ -29,6 +29,8 @@ var following_player := true
 
 func _ready() -> void:
 	set_zoom_percent(1)
+	zoom.x = zoom_goal
+	zoom.y = zoom_goal
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
