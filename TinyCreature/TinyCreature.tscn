@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://btegv4utd825m"]
+[gd_scene load_steps=8 format=3 uid="uid://btegv4utd825m"]
 
 [ext_resource type="Script" path="res://TinyCreature/TinyCreature.gd" id="1_rww3b"]
 [ext_resource type="Shader" uid="uid://0x7ndyk20oxm" path="res://TinyCreature/TinyCreatureSelectedShader.tres" id="2_ckjit"]
 [ext_resource type="Texture2D" uid="uid://54jnednsgmfq" path="res://LittleGuy.png" id="3_d58gx"]
+[ext_resource type="PackedScene" uid="uid://deakocdom8ine" path="res://TinyCreature/Roles/Monarch/Monarch.tscn" id="4_k7cv5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfuov"]
 size = Vector2(16, 16)
@@ -19,6 +20,9 @@ region = Rect2(0, 0, 16, 16)
 [node name="TinyCreature" type="CharacterBody2D" groups=["player_tiny_creatures"]]
 script = ExtResource("1_rww3b")
 
+[node name="BaseMovementAI" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_xfuov")
 
@@ -27,3 +31,7 @@ texture_filter = 1
 texture_repeat = 1
 material = SubResource("ShaderMaterial_4vllp")
 texture = SubResource("AtlasTexture_8sv07")
+
+[node name="Roles" type="Node2D" parent="."]
+
+[node name="Monarch" parent="Roles" instance=ExtResource("4_k7cv5")]

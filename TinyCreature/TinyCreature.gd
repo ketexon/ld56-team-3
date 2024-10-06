@@ -1,6 +1,15 @@
 class_name TinyCreature
 extends CharacterBody2D
 
+@export var lumberjack_skill: int = 2
+@export var foliage_skill: int = 2
+@export var mining_skill: int = 2
+@export var max_health: int = 100
+@export var damage: int = 5
+@export var speed: int = 5
+
+@onready var health := max_health
+
 enum Role {
 	UNASSIGNED,
 	MONARCH,
