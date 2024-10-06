@@ -13,12 +13,7 @@ var visible_resources:
 	get:
 		return colony.visible_resource[resource_type]
 
-enum CollectResourcePhase {
-	MOVING,
-	COLLECTING
-}
-
-var phase := CollectResourcePhase.MOVING
+var touching_resource: bool = false
 
 func _process(delta: float) -> void:
 	if not enabled: return
@@ -47,16 +42,10 @@ func _process(delta: float) -> void:
 func _start_collecting_resource():
 	phase = CollectResourcePhase.MOVING
 	base_movement_ai.enabled = false
+	tiny_creature.movement_dir = target_resource.global_position - global_position
 
 func _collect_resource():
-	match phase:
-		CollectResourcePhase.MOVING:
-
-		CollectResourcePhase.COLLECTING:
-			pass
-
-# func _physics_process(delta: float) -> void:
-# 	if target_resource and phase == CollectResourcePhase.MOVING:
+	pass
 
 
 func _stop_collecting_resource():
