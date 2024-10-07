@@ -17,8 +17,17 @@ size = Vector2(256, 256)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("map_generator")]
 script = ExtResource("1_6r02h")
+map_generator = NodePath("../TileMapLayer")
+colony_view_half_height_threshold = null
+max_half_height = null
+min_half_height = null
+start_zoom_percent = null
+zoom_duration = null
+pan_speed = null
+scroll_speed = null
+scroll_sensitivity = null
 
 [node name="Colony2" parent="." instance=ExtResource("2_mulan")]
 position = Vector2(852, -199)
@@ -44,8 +53,15 @@ scale = Vector2(256, 256)
 texture = SubResource("PlaceholderTexture2D_ivxcw")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD7/wsAAwACAAYAAAD6/wsAAwAIAAQAAAD8/wsAAwACAAYAAAD9/wsAAwAHAAQAAAD9/woAAwAHAAQAAAD8/woAAwACAAYAAAD7/woAAwACAAYAAAD6/woAAwAIAAQAAAD6/wkAAwAIAAQAAAD7/wkAAwACAAYAAAD8/wkAAwACAAYAAAD9/wkAAwAGAAQAAAD9/wgAAwAOAAQAAAD8/wgAAwAMAAQAAAD7/wgAAwAOAAQAAAD6/wgAAwAIAAQAAAD5/wsAAwABAAMAAAD5/woAAwAAAAYAAAD5/wkAAwAAAAYAAAD5/wgAAwAAAAYAAAD5/wcAAwABAAYAAAD6/wcAAwAAAAIAAAD7/wcAAwAEAAIAAAD8/wcAAwAAAAYAAAD9/wcAAwAAAAYAAAD+/wcAAwABAAYAAAD+/wgAAwAEAAIAAAD+/wkAAwAPAAIAAAD+/woAAwABAAYAAAD+/wsAAwABAAYAAAA=")
+position = Vector2(8, -30)
+tile_map_data = PackedByteArray("AAD7/wsAAwAHAAwAAAD8/wsAAwADAAwAAAD9/wsAAwAHAAwAAAD+/wsAAwAFAAUAAAD+/woAAwADAAwAAAD9/woAAwAHAAwAAAD8/woAAwAFAAUAAAD7/woAAwAHAAwAAAD6/wsAAwAHAAwAAAD6/wwAAwAHAAwAAAD7/wwAAwADAAwAAAD8/wwAAwAHAAwAAAD9/wwAAwAHAAwAAAD+/wwAAwAFAAUAAAD//wwAAwAHAAwAAAD//wsAAwAHAAwAAAD+/wkAAwADAAwAAAD9/wkAAwAFAAUAAAD8/wkAAwAHAAwAAAD7/wkAAwAFAAUAAAD6/wkAAwADAAwAAAD6/woAAwADAAwAAAD//woAAwAFAAUAAAD//wkAAwADAAwAAAA=")
 tile_set = ExtResource("6_eybed")
 rendering_quadrant_size = 32
 script = ExtResource("9_uu3pv")
+bounds = Rect2i(-125, -125, 250, 250)
+seed_density = 0.01
+spread_fail_chance = 0.25
+max_depth = 16
+rng_seed = "xy"

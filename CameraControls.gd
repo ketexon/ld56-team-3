@@ -1,15 +1,18 @@
 class_name CameraControls
 extends Camera2D
 
-@export var colony_view_half_height_threshold = 16.0 * 50.0
-@export var max_half_height = 16 * 100.0
-@export var min_half_height = 64.0
-@export var zoom_duration = 1.0
+@export var map_generator: MapGenerator
+
+@export var colony_view_half_height_threshold := 16.0 * 50.0
+@export var max_half_height := 16 * 100.0
+@export var min_half_height := 64.0
+@export var start_zoom_percent := 0.5
+@export var zoom_duration := 1.0
 @export var pan_speed: float = 10.0
 @export var scroll_speed: float = 10.0
 @export var scroll_sensitivity: float = 0.01
 
-const REFERENCE_HALF_HEIGHT = 1920.0 / 2
+const REFERENCE_HALF_HEIGHT = 540
 
 static var viewing_colony: bool = false
 
@@ -28,7 +31,7 @@ var following_player := true
 @onready var pan_goal: Vector2 = position
 
 func _ready() -> void:
-	set_zoom_percent(1)
+	set_zoom_percent(start_zoom_percent)
 	zoom.x = zoom_goal
 	zoom.y = zoom_goal
 
@@ -44,7 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				panning = false
 		if event.button_index == MOUSE_BUTTON_MIDDLE:
 			center_on_player()
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
 			set_zoom_percent(zoom_percent - scroll_sensitivity)
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			set_zoom_percent(zoom_percent + scroll_sensitivity)
@@ -78,6 +81,16 @@ func _process(delta: float) -> void:
 		var delta_pos := cur_pos - start_cursor_pos
 		pan_goal = start_pos - delta_pos/zoom.x
 
+	# constrain camera to the map
+	if pan_goal.x < map_generator.bounds.position.x * map_generator.rendering_quadrant_size:
+		pan_goal.x = map_generator.bounds.position.x * map_generator.rendering_quadrant_size
+	if pan_goal.x > (map_generator.bounds.position.x + map_generator.bounds.size.x) * map_generator.rendering_quadrant_size:
+		pan_goal.x = (map_generator.bounds.position.x + map_generator.bounds.size.x) * map_generator.rendering_quadrant_size
+	if pan_goal.y < map_generator.bounds.position.y * map_generator.rendering_quadrant_size:
+		pan_goal.y = map_generator.bounds.position.y * map_generator.rendering_quadrant_size
+	if pan_goal.y > (map_generator.bounds.position.y + map_generator.bounds.size.y) * map_generator.rendering_quadrant_size:
+		pan_goal.y = (map_generator.bounds.position.y + map_generator.bounds.size.y) * map_generator.rendering_quadrant_size
+
 	if following_player:
 		pan_goal = Colony.player_colony.monarch.position
 
@@ -96,16 +109,11 @@ func cur_half_height() -> float:
 	return REFERENCE_HALF_HEIGHT / zoom.x
 
 func get_zoom_from_half_height(half_height: float) -> float:
-	return REFERENCE_HALF_HEIGHT / half_height
+	return  REFERENCE_HALF_HEIGHT / half_height
 
 func set_zoom_percent(percent: float):
-	zoom_percent = clampf(percent, 0, 1)
-	var half_height_goal = lerp(
-		min_half_height,
-		max_half_height,
-		percent
-	)
-
+	zoom_percent = percent
+	var half_height_goal := min_half_height * pow(max_half_height / min_half_height, percent)
 	zoom_goal = get_zoom_from_half_height(half_height_goal)
 
 func center_on_player():

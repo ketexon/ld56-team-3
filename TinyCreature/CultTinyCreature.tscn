@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://8u52h08oykpy"]
+
+[ext_resource type="PackedScene" uid="uid://btegv4utd825m" path="res://TinyCreature/TinyCreature.tscn" id="1_b0tgx"]
+[ext_resource type="Texture2D" uid="uid://dil8cx6gmnebv" path="res://Assets/Cult-Sprite.png" id="2_muowh"]
+
+[node name="TinyCreature" instance=ExtResource("1_b0tgx")]
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_muowh")

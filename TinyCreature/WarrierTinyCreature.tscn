@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6juqjda0fese"]
+
+[ext_resource type="PackedScene" uid="uid://btegv4utd825m" path="res://TinyCreature/TinyCreature.tscn" id="1_cax2l"]
+
+[node name="TinyCreature" instance=ExtResource("1_cax2l")]

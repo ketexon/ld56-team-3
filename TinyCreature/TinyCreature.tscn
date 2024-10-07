@@ -1,11 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://btegv4utd825m"]
+[gd_scene load_steps=17 format=3 uid="uid://btegv4utd825m"]
 
 [ext_resource type="Script" path="res://TinyCreature/TinyCreature.gd" id="1_rww3b"]
 [ext_resource type="Shader" uid="uid://0x7ndyk20oxm" path="res://TinyCreature/TinyCreatureSelectedShader.tres" id="2_ckjit"]
 [ext_resource type="Script" path="res://TinyCreature/TinyCreatureBaseMovementAI.gd" id="2_cnp7e"]
-[ext_resource type="Texture2D" uid="uid://54jnednsgmfq" path="res://LittleGuy.png" id="3_d58gx"]
+[ext_resource type="Texture2D" uid="uid://dmjpjva4hdm8b" path="res://Assets/Warrior-Sprite.png" id="4_2r0ln"]
 [ext_resource type="PackedScene" uid="uid://deakocdom8ine" path="res://TinyCreature/Roles/Monarch/Monarch.tscn" id="4_k7cv5"]
+[ext_resource type="Texture2D" uid="uid://b04vbki4m1j23" path="res://Assets/Miner-Hat.png" id="5_87gf7"]
+[ext_resource type="Script" path="res://TinyCreature/TinyCreatureHat.gd" id="6_fy1j8"]
 [ext_resource type="PackedScene" uid="uid://dlwa2r7dawth7" path="res://TinyCreature/Roles/ResourceCollector/ResourceCollector.tscn" id="6_hf8v5"]
+[ext_resource type="Texture2D" uid="uid://i5f8qf4vlbp5" path="res://Assets/Warrior-Hat.png" id="7_bdqoo"]
+[ext_resource type="Texture2D" uid="uid://cvjbc0unvipj3" path="res://Assets/Lumberjack-Hat.png" id="8_2reog"]
+[ext_resource type="Texture2D" uid="uid://bu417ct7exgms" path="res://Assets/Forager-Hat.png" id="9_h7sj5"]
+[ext_resource type="Texture2D" uid="uid://bf5fck4wgx27q" path="res://Assets/Monarch-Hat.png" id="10_0fnxy"]
+[ext_resource type="Texture2D" uid="uid://e8rvafqu32wl" path="res://Assets/Ambassador-Hat.png" id="11_ycqgc"]
+[ext_resource type="Texture2D" uid="uid://cu1ow0at11mih" path="res://Assets/Royal-Hat.png" id="12_xhpfd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfuov"]
 size = Vector2(16, 16)
@@ -14,10 +22,6 @@ size = Vector2(16, 16)
 shader = ExtResource("2_ckjit")
 shader_parameter/OutlineEnabled = false
 shader_parameter/ColorParameterColorParameter = Color(1, 1, 1, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8sv07"]
-atlas = ExtResource("3_d58gx")
-region = Rect2(0, 0, 16, 16)
 
 [node name="TinyCreature" type="CharacterBody2D" groups=["player_tiny_creatures"]]
 collision_mask = 2
@@ -36,7 +40,22 @@ shape = SubResource("RectangleShape2D_xfuov")
 texture_filter = 1
 texture_repeat = 1
 material = SubResource("ShaderMaterial_4vllp")
-texture = SubResource("AtlasTexture_8sv07")
+texture = ExtResource("4_2r0ln")
+
+[node name="Hat" type="Sprite2D" parent="." node_paths=PackedStringArray("tiny_creature")]
+visible = false
+texture_filter = 1
+position = Vector2(0, -11)
+texture = ExtResource("5_87gf7")
+script = ExtResource("6_fy1j8")
+tiny_creature = NodePath("..")
+warrior_hat = ExtResource("7_bdqoo")
+lumberjack_hat = ExtResource("8_2reog")
+forager_hat = ExtResource("9_h7sj5")
+miner_hat = ExtResource("5_87gf7")
+monarch_hat = ExtResource("10_0fnxy")
+ambassador_hat = ExtResource("11_ycqgc")
+royal_hat = ExtResource("12_xhpfd")
 
 [node name="Roles" type="Node2D" parent="."]
 

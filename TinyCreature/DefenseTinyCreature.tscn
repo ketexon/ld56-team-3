@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdi623ge02m87"]
+
+[ext_resource type="PackedScene" uid="uid://8u52h08oykpy" path="res://TinyCreature/CultTinyCreature.tscn" id="1_jy760"]
+[ext_resource type="Texture2D" uid="uid://bqisjswwshfnf" path="res://Assets/Defense-Sprite.png" id="2_xseqm"]
+
+[node name="TinyCreature" instance=ExtResource("1_jy760")]
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_xseqm")
