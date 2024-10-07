@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3prsx1kgmqlb"]
+[gd_scene load_steps=3 format=3 uid="uid://b3prsx1kgmqlb"]
 
 [ext_resource type="Script" path="res://Shop/ShopButton.gd" id="1_damly"]
+[ext_resource type="Texture2D" uid="uid://b4svt735qkksd" path="res://icon.svg" id="2_qxnbc"]
 
 [node name="ShopButton" type="Button"]
 custom_minimum_size = Vector2(0, 64)
@@ -16,5 +17,167 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="ItemIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_qxnbc")
+expand_mode = 3
+
+[node name="ItemNameAndStats" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ItemName" type="VBoxContainer" parent="HBoxContainer/ItemNameAndStats"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ItemStats" type="VBoxContainer" parent="HBoxContainer/ItemNameAndStats"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="ItemStatIndividual" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Power" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Power"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Power"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Persuasion" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Persuasion"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Persuasion"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Reputation" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Reputation"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Reputation"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Attack" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Attack"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Attack"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Speed" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Speed"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Speed"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Health" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Health"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Health"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="ItemCost" type="HBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MinPower" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Item1Cost" type="Label" parent="HBoxContainer/ItemCost/MinPower"]
+layout_mode = 2
+
+[node name="Item1Icon" type="TextureRect" parent="HBoxContainer/ItemCost/MinPower"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="MinPersuasion" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Item2Cost" type="Label" parent="HBoxContainer/ItemCost/MinPersuasion"]
+layout_mode = 2
+
+[node name="Item2Icon" type="TextureRect" parent="HBoxContainer/ItemCost/MinPersuasion"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="MinReputation" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Item3Cost" type="Label" parent="HBoxContainer/ItemCost/MinReputation"]
+layout_mode = 2
+
+[node name="Item3Icon" type="TextureRect" parent="HBoxContainer/ItemCost/MinReputation"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Wood" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Item3Cost" type="Label" parent="HBoxContainer/ItemCost/Wood"]
+layout_mode = 2
+
+[node name="Item3Icon" type="TextureRect" parent="HBoxContainer/ItemCost/Wood"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Mushrooms" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Item3Cost" type="Label" parent="HBoxContainer/ItemCost/Mushrooms"]
+layout_mode = 2
+
+[node name="Item3Icon" type="TextureRect" parent="HBoxContainer/ItemCost/Mushrooms"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Jewels" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="Item3Cost" type="Label" parent="HBoxContainer/ItemCost/Jewels"]
+layout_mode = 2
+
+[node name="Item3Icon" type="TextureRect" parent="HBoxContainer/ItemCost/Jewels"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
 
 [connection signal="pressed" from="." to="." method="_on_ShopButton_pressed"]

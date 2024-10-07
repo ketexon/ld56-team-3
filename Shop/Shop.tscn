@@ -50,7 +50,7 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="ShopCloseButton" type="Button" parent="."]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = -1
@@ -63,4 +63,4 @@ offset_top = 0.199997
 offset_right = -0.600037
 offset_bottom = 64.2
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ShopCloseButton" to="." method="_on_button_pressed"]
