@@ -22,7 +22,7 @@ signal achieved(achievement : Achievement)
 
 # The Achievements
 var fiveAwards : Achievement = Achievement.new("fiveAwards", Achievement.ACHIEVEMENT_TYPE.META)
-var tenAwards : Achievement
+var tenAwards : Achievement = Achievement.new("tenAwards", Achievement.ACHIEVEMENT_TYPE.META)
 
 
 # Achievement Unlock Function
@@ -44,10 +44,11 @@ func achievementGet(achievement : Achievement) -> void:
 
 # Displays UI for an Achivement Unlock
 func displayAchievement(achievement : Achievement) -> void:
-	print("passed")
+	print (achievement.achievementName)
 
 func _on_signal_test_pressed() -> void:
 	achieved.emit(fiveAwards)
+	# print("signal emitted")
 	
 # Signal Calling Method
 func _on_achieved(achievement: Achievement) -> void:
