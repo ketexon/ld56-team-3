@@ -18,8 +18,17 @@ size = Vector2(256, 256)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("map_generator")]
 script = ExtResource("1_6r02h")
+map_generator = NodePath("../TileMapLayer")
+colony_view_half_height_threshold = null
+max_half_height = null
+min_half_height = null
+start_zoom_percent = null
+zoom_duration = null
+pan_speed = null
+scroll_speed = null
+scroll_sensitivity = null
 
 [node name="Colony2" parent="." instance=ExtResource("2_mulan")]
 position = Vector2(852, -199)
@@ -59,4 +68,3 @@ max_depth = 16
 rng_seed = "xy"
 
 [node name="AchievementManager" parent="." instance=ExtResource("10_txsnb")]
-unique_name_in_owner = true

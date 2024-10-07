@@ -43,6 +43,9 @@ static var player_colony: Colony
 static var rng := RandomNumberGenerator.new()
 
 func _ready() -> void:
+	var achievementManager = get_node("AchievementManager")
+	achievementManager.achieved.connect()
+	
 	if player:
 		player_colony = self
 		colony_ui.visible = false
@@ -121,9 +124,12 @@ func buy_shop_item(shop_item:ShopItem) -> bool:
 		return false
 	return true
 
+# debugging signals quickly
+var debugAch : Achievement = Achievement.new("debug",Achievement.ACHIEVEMENT_TYPE.POWER)
 # Button Presses
 func _on_action_1_pressed() -> void:
 	print("Action 1")
+	AchievementManager.achieved.emit(debugAch)
 func _on_action_2_pressed() -> void:
 	print("Action 2")
 func _on_action_3_pressed() -> void:

@@ -1,8 +1,5 @@
 extends Node2D
 
-# Make this an autoload later, future Caleb
-
-
 # Variables tracking achievement progress
 var completedAchievements : int = 0
 var powerAchievements : int = 0
@@ -47,11 +44,14 @@ func displayAchievement(achievement : Achievement) -> void:
 	print (achievement.achievementName)
 
 func _on_signal_test_pressed() -> void:
-	achieved.emit(fiveAwards)
+	# achieved.emit(fiveAwards)
 	# print("signal emitted")
+	completedAchievements += 1
+	print(str(completedAchievements))
 	
 # Signal Calling Method
 func _on_achieved(achievement: Achievement) -> void:
+	print(achievement.achievementName)
 	achievementGet(achievement)
 	displayAchievement(achievement)
 
