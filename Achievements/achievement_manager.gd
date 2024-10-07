@@ -12,8 +12,18 @@ var funnyAchievements : int = 0
 var devAchievements : int = 0
 var metaAchievements : int = 0
 
+# Checks for Achievements in _process()
+var fiveAchievements : bool = false
+var tenAchievements : bool = false
+
+
 # Signals
 signal achieved(achievement : Achievement)
+
+# The Achievements
+var fiveAwards : Achievement = Achievement.new("fiveAwards", Achievement.ACHIEVEMENT_TYPE.META)
+var tenAwards : Achievement
+
 
 # Achievement Unlock Function
 func achievementGet(achievement : Achievement) -> void:
@@ -34,14 +44,21 @@ func achievementGet(achievement : Achievement) -> void:
 
 # Displays UI for an Achivement Unlock
 func displayAchievement(achievement : Achievement) -> void:
-	pass
-
+	print("passed")
 
 func _on_signal_test_pressed() -> void:
-	achieved.emit("name")
+	achieved.emit(fiveAwards)
 	
 # Signal Calling Method
 func _on_achieved(achievement: Achievement) -> void:
 	achievementGet(achievement)
 	displayAchievement(achievement)
-	
+
+# most of these will just determine if an achievement is earned
+func _process(delta: float) -> void:
+	if (completedAchievements == 5 && not fiveAchievements):
+		fiveAchievements = true
+		achieved.emit(fiveAwards)
+	if (completedAchievements == 10 && not tenAchievements):
+		tenAchievements = true
+		achieved.emit(tenAwards)
