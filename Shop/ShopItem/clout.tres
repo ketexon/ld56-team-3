@@ -4,16 +4,19 @@
 
 [resource]
 script = ExtResource("1_7ptu5")
-name = ""
+name = "Clout"
 cost_wood = 0
 cost_mushroom = 0
 cost_jewel = 0
 min_power = 0
-delta_power = 0
-mult_power = 1
 min_persuasion = 0
-delta_persuasion = 0
-mult_persuasion = 1
 min_reputation = 0
+delta_power = 0
+delta_persuasion = 0
 delta_reputation = 0
+mult_power = 1
+mult_persuasion = 1
 mult_reputation = 1
+mult_attack = 1
+mult_speed = 1
+mult_health = 1

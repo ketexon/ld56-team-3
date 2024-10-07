@@ -9,13 +9,17 @@ extends Resource
 @export var cost_jewel: int
 
 @export var min_power: int
-@export var delta_power: int
-@export var mult_power: int = 1
-
 @export var min_persuasion: int
-@export var delta_persuasion: int
-@export var mult_persuasion: int = 1
-
 @export var min_reputation: int
+
+@export var delta_power: int
+@export var delta_persuasion: int
 @export var delta_reputation: int
+
+@export var mult_power: int = 1
+@export var mult_persuasion: int = 1
 @export var mult_reputation: int = 1 
+
+@export var mult_attack: int = 1
+@export var mult_speed: int = 1
+@export var mult_health: int = 1

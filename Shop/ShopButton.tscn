@@ -20,6 +20,7 @@ grow_vertical = 2
 theme_override_constants/separation = 8
 
 [node name="ItemIcon" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("2_qxnbc")
 expand_mode = 3
@@ -29,10 +30,10 @@ custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ItemName" type="VBoxContainer" parent="HBoxContainer/ItemNameAndStats"]
+[node name="ItemName" type="Label" parent="HBoxContainer/ItemNameAndStats"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_constants/separation = 8
 
 [node name="ItemStats" type="VBoxContainer" parent="HBoxContainer/ItemNameAndStats"]
 custom_minimum_size = Vector2(0, 32)
@@ -44,70 +45,94 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="Power" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Power"]
+[node name="PowerStatChange" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Power"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Power"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [node name="Persuasion" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Persuasion"]
+[node name="PersuasionStatChange" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Persuasion"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Persuasion"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [node name="Reputation" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Reputation"]
+[node name="ReputationStatChange" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Reputation"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Reputation"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [node name="Attack" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Attack"]
+[node name="AttackStatChange" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Attack"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Attack"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [node name="Speed" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Speed"]
+[node name="SpeedStatChange" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Speed"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Speed"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [node name="Health" type="HBoxContainer" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Health"]
+[node name="HealthStatChange" type="Label" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Health"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/ItemNameAndStats/ItemStats/ItemStatIndividual/Health"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [node name="ItemCost" type="HBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(128, 64)
@@ -115,69 +140,93 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="MinPower" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Item1Cost" type="Label" parent="HBoxContainer/ItemCost/MinPower"]
+[node name="MinPowerReq" type="Label" parent="HBoxContainer/ItemCost/MinPower"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Item1Icon" type="TextureRect" parent="HBoxContainer/ItemCost/MinPower"]
+[node name="PowerIcon" type="TextureRect" parent="HBoxContainer/ItemCost/MinPower"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [node name="MinPersuasion" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Item2Cost" type="Label" parent="HBoxContainer/ItemCost/MinPersuasion"]
+[node name="MinPersuasionReq" type="Label" parent="HBoxContainer/ItemCost/MinPersuasion"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Item2Icon" type="TextureRect" parent="HBoxContainer/ItemCost/MinPersuasion"]
+[node name="PersuasionIcon" type="TextureRect" parent="HBoxContainer/ItemCost/MinPersuasion"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [node name="MinReputation" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Item3Cost" type="Label" parent="HBoxContainer/ItemCost/MinReputation"]
+[node name="MinReputationReq" type="Label" parent="HBoxContainer/ItemCost/MinReputation"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Item3Icon" type="TextureRect" parent="HBoxContainer/ItemCost/MinReputation"]
+[node name="ReputationIcon" type="TextureRect" parent="HBoxContainer/ItemCost/MinReputation"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [node name="Wood" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Item3Cost" type="Label" parent="HBoxContainer/ItemCost/Wood"]
+[node name="CostWood" type="Label" parent="HBoxContainer/ItemCost/Wood"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Item3Icon" type="TextureRect" parent="HBoxContainer/ItemCost/Wood"]
+[node name="WoodIcon" type="TextureRect" parent="HBoxContainer/ItemCost/Wood"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [node name="Mushrooms" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Item3Cost" type="Label" parent="HBoxContainer/ItemCost/Mushrooms"]
+[node name="CostMushroom" type="Label" parent="HBoxContainer/ItemCost/Mushrooms"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Item3Icon" type="TextureRect" parent="HBoxContainer/ItemCost/Mushrooms"]
+[node name="MushroomsIcon" type="TextureRect" parent="HBoxContainer/ItemCost/Mushrooms"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [node name="Jewels" type="HBoxContainer" parent="HBoxContainer/ItemCost"]
+unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[node name="Item3Cost" type="Label" parent="HBoxContainer/ItemCost/Jewels"]
+[node name="CostJewel" type="Label" parent="HBoxContainer/ItemCost/Jewels"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Item3Icon" type="TextureRect" parent="HBoxContainer/ItemCost/Jewels"]
+[node name="JewelsIcon" type="TextureRect" parent="HBoxContainer/ItemCost/Jewels"]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
+expand_mode = 3
 
 [connection signal="pressed" from="." to="." method="_on_ShopButton_pressed"]
