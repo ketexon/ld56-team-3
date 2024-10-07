@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b33kuaqm0s1q"]
+[gd_scene load_steps=12 format=4 uid="uid://b33kuaqm0s1q"]
 
 [ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
 [ext_resource type="PackedScene" uid="uid://blqoqhbium4lv" path="res://Colony/Colony.tscn" id="2_mulan"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://1nnbchgsiedh" path="res://Shop/ShopItem/clout.tres" id="4_hj2xi"]
 [ext_resource type="Script" path="res://GResource/GResource.gd" id="5_63egg"]
 [ext_resource type="TileSet" uid="uid://dsm533g8dtacg" path="res://Tiles/TileSet.tres" id="6_eybed"]
+[ext_resource type="Script" path="res://MapGenerator.gd" id="9_uu3pv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qwmq"]
 size = Vector2(256, 256)
@@ -47,3 +48,4 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAD7/wsAAwACAAYAAAD6/wsAAwAIAAQAAAD8/wsAAwACAAYAAAD9/wsAAwAHAAQAAAD9/woAAwAHAAQAAAD8/woAAwACAAYAAAD7/woAAwACAAYAAAD6/woAAwAIAAQAAAD6/wkAAwAIAAQAAAD7/wkAAwACAAYAAAD8/wkAAwACAAYAAAD9/wkAAwAGAAQAAAD9/wgAAwAOAAQAAAD8/wgAAwAMAAQAAAD7/wgAAwAOAAQAAAD6/wgAAwAIAAQAAAD5/wsAAwABAAMAAAD5/woAAwAAAAYAAAD5/wkAAwAAAAYAAAD5/wgAAwAAAAYAAAD5/wcAAwABAAYAAAD6/wcAAwAAAAIAAAD7/wcAAwAEAAIAAAD8/wcAAwAAAAYAAAD9/wcAAwAAAAYAAAD+/wcAAwABAAYAAAD+/wgAAwAEAAIAAAD+/wkAAwAPAAIAAAD+/woAAwABAAYAAAD+/wsAAwABAAYAAAA=")
 tile_set = ExtResource("6_eybed")
 rendering_quadrant_size = 32
+script = ExtResource("9_uu3pv")
