@@ -14,6 +14,11 @@ config/name="ld56-team-3"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+"<<<<<<<Updatedupstream[debug]gdscript/warnings/integer_division"=0
+
+[autoload]
+
+AchievementManager="*res://Achievements/achievement_manager.gd"
 
 [debug]
 

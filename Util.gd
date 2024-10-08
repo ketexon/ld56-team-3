@@ -12,8 +12,8 @@ static func closest_point_rect(collision_shape: CollisionShape2D, target_point: 
 	var local_point := xform.affine_inverse() * target_point
 
 	var closest_local_point = Vector2(
-        clamp(local_point.x, -extents.x, extents.x),
-        clamp(local_point.y, -extents.y, extents.y),
-    )
+		clamp(local_point.x, -extents.x, extents.x),
+		clamp(local_point.y, -extents.y, extents.y),
+	)
 
 	return xform * closest_local_point

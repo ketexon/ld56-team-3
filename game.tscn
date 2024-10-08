@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b33kuaqm0s1q"]
+[gd_scene load_steps=12 format=3 uid="uid://b33kuaqm0s1q"]
 
 [ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
 [ext_resource type="PackedScene" uid="uid://blqoqhbium4lv" path="res://Colony/Colony.tscn" id="2_mulan"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://1nnbchgsiedh" path="res://Shop/ShopItem/clout.tres" id="4_hj2xi"]
 [ext_resource type="Script" path="res://GResource/GResource.gd" id="5_63egg"]
 [ext_resource type="PackedScene" uid="uid://8amsnecg7jvn" path="res://Map/Map.tscn" id="8_1gqkm"]
+[ext_resource type="PackedScene" uid="uid://bmi40yresg6tk" path="res://Achievements/achievement_manager.tscn" id="10_txsnb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6qwmq"]
 size = Vector2(256, 256)
@@ -16,9 +17,8 @@ size = Vector2(256, 256)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("map_generator")]
+[node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_6r02h")
-map_generator = NodePath("../Map")
 
 [node name="Colony2" parent="." instance=ExtResource("2_mulan")]
 position = Vector2(852, -199)
@@ -43,5 +43,7 @@ shape = SubResource("RectangleShape2D_6qwmq")
 scale = Vector2(256, 256)
 texture = SubResource("PlaceholderTexture2D_ivxcw")
 
+[node name="AchievementManager" parent="." instance=ExtResource("10_txsnb")]
+unique_name_in_owner = true
+
 [node name="Map" parent="." instance=ExtResource("8_1gqkm")]
-size = Vector2i(200, 200)

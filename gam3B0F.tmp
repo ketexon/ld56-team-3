@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=4 uid="uid://b33kuaqm0s1q"]
+
+[ext_resource type="Script" path="res://CameraControls.gd" id="1_6r02h"]
+[ext_resource type="PackedScene" uid="uid://blqoqhbium4lv" path="res://Colony/Colony.tscn" id="2_mulan"]
+[ext_resource type="Script" path="res://Shop/ShopItem.gd" id="3_kwj6s"]
+[ext_resource type="PackedScene" uid="uid://bhw1scxos7xws" path="res://Selection/TinyCreatureSelector.tscn" id="3_nht5s"]
+[ext_resource type="PackedScene" uid="uid://bbqbwkcy3s6en" path="res://UI.tscn" id="4_b05wy"]
+[ext_resource type="Resource" uid="uid://1nnbchgsiedh" path="res://Shop/ShopItem/clout.tres" id="4_hj2xi"]
+[ext_resource type="Script" path="res://GResource/GResource.gd" id="5_63egg"]
+[ext_resource type="TileSet" uid="uid://dsm533g8dtacg" path="res://Tiles/TileSet.tres" id="6_eybed"]
+[ext_resource type="Script" path="res://MapGenerator.gd" id="9_uu3pv"]
+[ext_resource type="PackedScene" uid="uid://bmi40yresg6tk" path="res://Achievements/achievement_manager.tscn" id="10_txsnb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qwmq"]
+size = Vector2(256, 256)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ivxcw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("map_generator")]
+script = ExtResource("1_6r02h")
+map_generator = NodePath("../TileMapLayer")
+colony_view_half_height_threshold = null
+max_half_height = null
+min_half_height = null
+start_zoom_percent = null
+zoom_duration = null
+pan_speed = null
+scroll_speed = null
+scroll_sensitivity = null
+
+[node name="Colony2" parent="." instance=ExtResource("2_mulan")]
+position = Vector2(852, -199)
+player = false
+
+[node name="Colony" parent="." instance=ExtResource("2_mulan")]
+available_shop_items = Array[ExtResource("3_kwj6s")]([ExtResource("4_hj2xi")])
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_b05wy")]
+
+[node name="TinyCreatureSelector" parent="." instance=ExtResource("3_nht5s")]
+
+[node name="WoodResource" type="StaticBody2D" parent="." groups=["resources"]]
+position = Vector2(-398, 0)
+collision_layer = 3
+script = ExtResource("5_63egg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WoodResource"]
+shape = SubResource("RectangleShape2D_6qwmq")
+
+[node name="Sprite2D" type="Sprite2D" parent="WoodResource"]
+scale = Vector2(256, 256)
+texture = SubResource("PlaceholderTexture2D_ivxcw")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(8, -30)
+tile_map_data = PackedByteArray("AAD7/wsAAwAHAAwAAAD8/wsAAwADAAwAAAD9/wsAAwAHAAwAAAD+/wsAAwAFAAUAAAD+/woAAwADAAwAAAD9/woAAwAHAAwAAAD8/woAAwAFAAUAAAD7/woAAwAHAAwAAAD6/wsAAwAHAAwAAAD6/wwAAwAHAAwAAAD7/wwAAwADAAwAAAD8/wwAAwAHAAwAAAD9/wwAAwAHAAwAAAD+/wwAAwAFAAUAAAD//wwAAwAHAAwAAAD//wsAAwAHAAwAAAD+/wkAAwADAAwAAAD9/wkAAwAFAAUAAAD8/wkAAwAHAAwAAAD7/wkAAwAFAAUAAAD6/wkAAwADAAwAAAD6/woAAwADAAwAAAD//woAAwAFAAUAAAD//wkAAwADAAwAAAA=")
+tile_set = ExtResource("6_eybed")
+rendering_quadrant_size = 32
+script = ExtResource("9_uu3pv")
+bounds = Rect2i(-125, -125, 250, 250)
+seed_density = 0.01
+spread_fail_chance = 0.25
+max_depth = 16
+rng_seed = "xy"
+
+[node name="AchievementManager" parent="." instance=ExtResource("10_txsnb")]

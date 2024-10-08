@@ -7,30 +7,59 @@ var persuasionAchievements : int = 0
 var reputationAchievements : int = 0
 var funnyAchievements : int = 0
 var devAchievements : int = 0
+var metaAchievements : int = 0
+
+# Checks for Achievements in _process()
+var fiveAchievements : bool = false
+var tenAchievements : bool = false
+
 
 # Signals
-signal achieved(name)
+signal achieved(achievement : Achievement)
+
+# The Achievements
+var fiveAwards : Achievement = Achievement.new("fiveAwards", Achievement.ACHIEVEMENT_TYPE.META)
+var tenAwards : Achievement = Achievement.new("tenAwards", Achievement.ACHIEVEMENT_TYPE.META)
+
 
 # Achievement Unlock Function
-func achievementGet(achievement : String) -> void:
-	achieved.emit(achievement)
+func achievementGet(achievement : Achievement) -> void:
+	completedAchievements += 1
+	
+	if (achievement.ACHIEVEMENT_TYPE.POWER):
+		powerAchievements += 1
+	elif (achievement.ACHIEVEMENT_TYPE.PERSUASION):
+		persuasionAchievements += 1
+	elif (achievement.ACHIEVEMENT_TYPE.REPUTATION):
+		reputationAchievements += 1
+	elif (achievement.ACHIEVEMENT_TYPE.FUNNY):
+		funnyAchievements += 1
+	elif (achievement.ACHIEVEMENT_TYPE.DEV):
+		devAchievements += 1
+	elif (achievement.ACHIEVEMENT_TYPE.META):
+		metaAchievements += 1
 
 # Displays UI for an Achivement Unlock
-func displayAchievement(achievement : String) -> void:
-	pass
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	var timer = get_node("Timer")
-	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if (player_colony.power == 10):
-		pass
-
+func displayAchievement(achievement : Achievement) -> void:
+	print (achievement.achievementName)
 
 func _on_signal_test_pressed() -> void:
-	achieved.emit("name")
+	# achieved.emit(fiveAwards)
+	# print("signal emitted")
+	completedAchievements += 1
+	print(str(completedAchievements))
+	
+# Signal Calling Method
+func _on_achieved(achievement: Achievement) -> void:
+	print(achievement.achievementName)
+	achievementGet(achievement)
+	displayAchievement(achievement)
+
+# most of these will just determine if an achievement is earned
+func _process(delta: float) -> void:
+	if (completedAchievements == 5 && not fiveAchievements):
+		fiveAchievements = true
+		achieved.emit(fiveAwards)
+	if (completedAchievements == 10 && not tenAchievements):
+		tenAchievements = true
+		achieved.emit(tenAwards)

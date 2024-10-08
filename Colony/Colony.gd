@@ -121,9 +121,12 @@ func buy_shop_item(shop_item:ShopItem) -> bool:
 		return false
 	return true
 
+# debugging signals quickly
+var debugAch : Achievement = Achievement.new("debug",Achievement.ACHIEVEMENT_TYPE.POWER)
 # Button Presses
 func _on_action_1_pressed() -> void:
 	print("Action 1")
+	AchievementManager.achieved.emit(debugAch)
 func _on_action_2_pressed() -> void:
 	print("Action 2")
 func _on_action_3_pressed() -> void:
