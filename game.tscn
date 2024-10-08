@@ -17,8 +17,9 @@ size = Vector2(256, 256)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("map_generator")]
 script = ExtResource("1_6r02h")
+map_generator = NodePath("../Map")
 
 [node name="Colony2" parent="." instance=ExtResource("2_mulan")]
 position = Vector2(852, -199)
