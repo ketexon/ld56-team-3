@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=4 uid="uid://8amsnecg7jvn"]
+
+[ext_resource type="TileSet" uid="uid://dsm533g8dtacg" path="res://Tiles/TileSet.tres" id="1_c7wvb"]
+[ext_resource type="Script" path="res://Map/MapGenerator.gd" id="2_gjflv"]
+[ext_resource type="Script" path="res://Map/VoronoiGenerator.gd" id="3_2w8mh"]
+[ext_resource type="Texture2D" uid="uid://bosl27ah8v5qp" path="res://Map/map_texture.tres" id="4_s67nk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0rqhj"]
+
+[node name="Map" type="TileMapLayer"]
+z_index = -1
+texture_filter = 1
+position = Vector2(8, -30)
+tile_map_data = PackedByteArray("AAD7/wsAAwAHAAwAAAD8/wsAAwADAAwAAAD9/wsAAwAHAAwAAAD+/wsAAwAFAAUAAAD+/woAAwADAAwAAAD9/woAAwAHAAwAAAD8/woAAwAFAAUAAAD7/woAAwAHAAwAAAD6/wsAAwAHAAwAAAD6/wwAAwAHAAwAAAD7/wwAAwADAAwAAAD8/wwAAwAHAAwAAAD9/wwAAwAHAAwAAAD+/wwAAwAFAAUAAAD//wwAAwAHAAwAAAD//wsAAwAHAAwAAAD+/wkAAwADAAwAAAD9/wkAAwAFAAUAAAD8/wkAAwAHAAwAAAD7/wkAAwAFAAUAAAD6/wkAAwADAAwAAAD6/woAAwADAAwAAAD//woAAwAFAAUAAAD//wkAAwADAAwAAAA=")
+tile_set = ExtResource("1_c7wvb")
+rendering_quadrant_size = 32
+script = ExtResource("2_gjflv")
+size = Vector2i(125, 125)
+seed_density = 0.01
+spread_fail_chance = 0.25
+max_depth = 16
+
+[node name="VoronoiGenerator" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-8, 30)
+script = ExtResource("3_2w8mh")
+texture = ExtResource("4_s67nk")
+
+[node name="Loading" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 128
+
+[node name="BKG" type="ColorRect" parent="Loading"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LoadingLabel" type="Label" parent="Loading"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading"
+label_settings = SubResource("LabelSettings_0rqhj")
+horizontal_alignment = 1
+vertical_alignment = 1
